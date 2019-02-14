@@ -1,12 +1,13 @@
-# CPTR142 Group Project - Music
+# CPTR142 Group Project - Music (Project 3)
 
-CPTR 142 Group Project (Project 3)
 Date: 2/12/19
-Authors: Caleb nelson
-Authors: Elliott Claus
-Description: 
 
-CPTR 142 Group Project (Project 3)
+Authors: Caleb nelson
+
+Authors: Elliott Claus
+
+Description:
+
 A counterpoint generator program. This program reads int a line of
 music, presents the user with three styles of counterpoint to choose from, and then outputs a line of counterpoint of the chosen style.
 
