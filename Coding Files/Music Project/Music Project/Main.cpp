@@ -39,12 +39,88 @@
  * Also there is an automatically generated ClassDiagram at the top you can view if you want.  This Diagram's style can be changed and is automatically updated as classes
  * are outlined in the code.  It can also be easily exported to an image or PDF if we want to use it.  Up to you guys though.
  * 
+ * All code and function documentation will be done using Doxygen tags -- this is again because it integrates nicely with Visual Studio.
+ * For example. when you are writing code to call a function or are hovering over a function, VS will show you
+ * what that function does, its description, its pre and post conditions, what it returns, and a description of each parameter and its purpose etc.
+ * or whatever else you have documented about it using the doxygen tags
+ * The full list of available tags can be found here: http://www.doxygen.nl/manual/commands.html
+ * But the main ones we will use are:
+ * @brief - http://www.doxygen.nl/manual/commands.html#cmdbrief
+ * @param <parameter name> - http://www.doxygen.nl/manual/commands.html#cmdparam
+ * @return - http://www.doxygen.nl/manual/commands.html#cmdreturn
+ * @pre - http://www.doxygen.nl/manual/commands.html#cmdpre
+ * @post - http://www.doxygen.nl/manual/commands.html#cmdpost
+ * Note: the comment will need to be of the style that starts with "/ **" (without spaces) for these tags to work properly -- see below for an example
+ * 
+ * All comments will start with a space and capital letter after the //
+ * // Like this
+ * 
  */
+
+// Function documentation outline example
+/**
+ * @brief
+ *
+ *
+ * @pre
+ *
+ *
+ * @post
+ *
+ *
+ * @return
+ *
+ *
+ * @param
+ *
+ */
+
 
 #include <iostream>
 
+using namespace std;
+
+//HACK TEMP DECLARATION
+void GenerateNoteEnum();
 
 int main() {
-	
+
+	GenerateNoteEnum();
+
 	return 0;
+}
+
+/**
+ * @brief
+ * This function is used to generate the code for the Note enum -- please don't remove this function as we may want to use it later
+ * 
+ */
+void GenerateNoteEnum() {
+	char letter = 'A';
+	int keyNumber = 0;
+	int keyLabelNumber = 0;
+
+	for (; keyNumber < 88; keyNumber++) {
+
+		// Check and update letter and keyLabelNumber
+		if (letter == 'H') letter = 'A';
+		if (letter == 'C') keyLabelNumber++;
+
+		// Print note assignment line for current note
+		cout << "Note_" << letter << keyLabelNumber << " = " << keyNumber << "," << endl;
+
+		// If necessary, print note assignment lines for sharps and flats
+		if (letter != 'B' && letter != 'E' && keyNumber < 87) {
+			keyNumber++;
+			// Print note assignment line for current letter's sharp
+			cout << "Note_" << letter << keyLabelNumber << "_sharp" << " = " << keyNumber << "," << endl;
+			// Print note assignment line for next letter's flat
+			char nextLetter = letter + 1;
+			if (nextLetter == 'H') nextLetter = 'A';
+			cout << "Note_" << nextLetter << keyLabelNumber << "_flat" << " = " << keyNumber << "," << endl;
+		}
+
+		// Increment values
+		letter++;
+	}
 }
