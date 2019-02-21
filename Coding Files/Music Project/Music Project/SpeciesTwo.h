@@ -6,6 +6,7 @@ class SpeciesTwo :
 public:
 	SpeciesTwo();
 	~SpeciesTwo();
+	void decideNextNote();
 	bool melodicRule1();
 	bool melodicRule2();
 	bool harmonicRule1();
