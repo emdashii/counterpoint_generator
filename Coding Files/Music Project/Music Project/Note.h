@@ -141,13 +141,13 @@ public:
 	Note();
 	Note(NoteType note, int time);
 	~Note();
-	getNote() { return note; }
-	getTime() { return time; }
-	setNote();
-	setTime();
+	NoteType getNote() { return note; }
+	int getLength() { return length; }
+	void setNote(NoteType note) { this->note = note; } // TODO: Fix this function to take a Note type and update the enum
+	void setLength(int length) { this->length = length; }
 private:
 	NoteType note;
-	int time;
+	int length;
 
 };
 

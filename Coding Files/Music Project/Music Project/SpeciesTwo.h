@@ -1,15 +1,17 @@
 #pragma once
 #include "SpeciesOne.h"
+
+// TODO: Finish after SpeciesOne -- Elliott
 class SpeciesTwo :
 	public SpeciesOne
 {
 public:
 	SpeciesTwo();
 	~SpeciesTwo();
-	void decideNextNote();
-	bool melodicRule1();
-	bool melodicRule2();
-	bool harmonicRule1();
-	bool harmonicRule2();
+	Note decideNextNote();
+	bool melodicRule2a();
+	bool melodicRule2b();
+	bool harmonicRule2a();
+	bool harmonicRule2b();
 };
 

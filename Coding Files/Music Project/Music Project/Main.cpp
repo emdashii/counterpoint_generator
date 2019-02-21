@@ -77,6 +77,12 @@
 
 
 #include <iostream>
+// #include <vector>
+// #include "Note.h"
+// #include "WritePhrase.h"
+// #include "SpeciesTwo.h"
+// #include "SpeciesFour.h"
+// #include "SpeciesOne.h"
 
 using namespace std;
 

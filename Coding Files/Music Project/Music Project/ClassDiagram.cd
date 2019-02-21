@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
-  <Class Name="WritePhrase">
-    <Position X="4.5" Y="0.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAAEAIAEAEAAAAAAABAAAAAAQASAACAAA=</HashCode>
-      <FileName>WritePhrase.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Note">
     <Position X="7" Y="0.5" Width="1.75" />
     <TypeIdentifier>
@@ -40,6 +33,13 @@
     <TypeIdentifier>
       <HashCode>AEAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAA=</HashCode>
       <FileName>ExportToFile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WritePhrase">
+    <Position X="4.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAEAIAEAEAAAAAAABAAAAAAQASAASAAA=</HashCode>
+      <FileName>WritePhrase.h</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="NoteType" Collapsed="true">

@@ -1,1 +1,12 @@
-﻿#include "WritePhrase.h"
+#include "WritePhrase.h"
+
+
+
+WritePhrase::WritePhrase()
+{
+}
+
+
+WritePhrase::~WritePhrase()
+{
+}

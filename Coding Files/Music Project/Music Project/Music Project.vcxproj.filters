@@ -21,9 +21,6 @@
     <ClCompile Include="Note.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WritePhrase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SpeciesOne.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,13 +33,13 @@
     <ClCompile Include="ExportToFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WritePhrase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Note.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WritePhrase.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="SpeciesOne.h">
       <Filter>Header Files</Filter>
@@ -54,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ExportToFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WritePhrase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
