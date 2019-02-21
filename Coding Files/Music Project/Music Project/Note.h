@@ -139,7 +139,15 @@ class Note
 {
 public:
 	Note();
+	Note(NoteType note, int time);
 	~Note();
+	getNote() { return note; }
+	getTime() { return time; }
+	setNote();
+	setTime();
+private:
+	NoteType note;
+	int time;
 
 };
 
