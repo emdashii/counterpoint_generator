@@ -1,6 +1,6 @@
 The specifications outlines the project design specifications and project management plan. This is done BEFORE CODING!
 #UML Class Diagrams showing classes, member variables, member functions, and relationships between classes.
-
+* See email for picture
 
 #User Interface design showing menus and output expected.
 * First, the user will be asked to pick a key and a length of the phrase.  
