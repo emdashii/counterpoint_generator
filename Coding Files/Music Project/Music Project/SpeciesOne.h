@@ -1,20 +1,19 @@
 #pragma once
 #include "Note.h"
+#include "Species.h"
+using namespace::std;
 
 // TODO: Complete this class -- Elliott
 
-class SpeciesOne
+class SpeciesOne : public Species
 {
 public:
 	SpeciesOne();
 	SpeciesOne(Note noteBefore, Note noteBelow, Note beforeAndBelow);
 	~SpeciesOne();
-	virtual Note decideNextNote();
+	Note chooseNextNote();
 	
 protected:
-	Note noteBefore;
-	Note noteBelow;
-	Note beforeAndBelow;
 	// Now for the species rules.....
 	bool melodicRule1a();
 	bool melodicRule1b();

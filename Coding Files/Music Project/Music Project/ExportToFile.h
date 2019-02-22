@@ -1,4 +1,5 @@
 #pragma once
+using namespace::std;
 
 // TODO: Complete this class -- Caleb
 class ExportToFile

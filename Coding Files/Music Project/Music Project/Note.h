@@ -1,4 +1,5 @@
 #pragma once
+using namespace::std;
 
 /*
  * Refer to the keyboard layout picture in non-coding related folder for the keyboard layout this was based off of

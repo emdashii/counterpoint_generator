@@ -1,14 +1,15 @@
 #pragma once
-#include "SpeciesOne.h"
+#include "Species.h"
+using namespace::std;
 
 // TODO: Finish after SpeciesTwo -- Elliott
 class SpeciesFour :
-	public SpeciesOne
+	public Species
 {
 public:
 	SpeciesFour();
 	~SpeciesFour();
-	Note decideNextNote();
+	Note chooseNextNote();
 	bool melodicRule4a();
 	bool melodicRule4b();
 	bool harmonicRule4a();

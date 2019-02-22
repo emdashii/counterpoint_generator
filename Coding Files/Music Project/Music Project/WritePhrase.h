@@ -1,18 +1,16 @@
 #pragma once
 #include "Note.h"
-// #include "SpeciesTwo.h"
-// #include "SpeciesFour.h"
-// #include "SpeciesOne.h"
+#include "SpeciesTwo.h"
+#include "SpeciesFour.h"
+#include "SpeciesOne.h"
 #include <vector>
+using namespace::std;
 
 // TODO: Complete this class
 
 class WritePhrase
 {
 public:
-	WritePhrase();
-	WritePhrase(Note key);
-	WritePhrase(Note key, int speciesType);
 	WritePhrase(Note key, int measureLength, int beatsPerMeasure, int speciesType);
 	~WritePhrase();
 	void setSeed(int seed);
@@ -28,7 +26,6 @@ public:
 private:
 	void writeLowerVoice();
 	void writeUpperVoice(int speciesType);
-	std::vector<Note> upperVoice;
-	vector<Note> lowerVoice;
+	vector<Note> upperVoice;
 };
 
