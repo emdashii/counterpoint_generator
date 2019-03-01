@@ -150,7 +150,5 @@ public:
 private:
 	NoteType note;
 	int length;
-protected:
-	NoteType key;
 };
 

@@ -11,6 +11,10 @@ public:
 	int pickRandomInterval();
 	vector<int> getLowerVoice() { return lowerVoice; }
 	void printLowerVoice();
+	void writeCheatTwoVoices();
+	vector<int> writeCheatLowerVoice();
+	int pickCheatUp();
+	int pickCheatDown();
 private:
 	vector<int> lowerVoice;
 	int length;

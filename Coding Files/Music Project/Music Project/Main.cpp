@@ -94,8 +94,14 @@ int main() {
 	//GenerateNoteEnum();
 	GenerateLowerVoice lvTest1;
 	lvTest1.printLowerVoice();
-	GenerateLowerVoice lvTest2(30);
+	GenerateLowerVoice lvTest2(14);
 	lvTest2.printLowerVoice();
+	cout << endl << endl;
+
+	//THIS IS JUST A TEST :P
+	lvTest1.writeCheatTwoVoices();
+	cout << endl;
+	lvTest2.writeCheatTwoVoices();
 	cout << endl;
 
 	for (int i = 0; i < 10; i++) {
