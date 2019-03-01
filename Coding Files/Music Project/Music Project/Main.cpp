@@ -3,7 +3,6 @@
  *	Date: 2/12/19
  *	Authors: Caleb nelson
  *	Authors: Elliott Claus
- *	Authors: Devin Grabner
  *	Description: 
  *
  */
@@ -77,6 +76,7 @@
 
 
 #include <iostream>
+#include "GenerateLowerVoice.h"
 // #include <vector>
 // #include "Note.h"
 // #include "WritePhrase.h"
@@ -91,7 +91,17 @@ void GenerateNoteEnum();
 
 int main() {
 
-	GenerateNoteEnum();
+	//GenerateNoteEnum();
+	GenerateLowerVoice lvTest1;
+	lvTest1.printLowerVoice();
+	GenerateLowerVoice lvTest2(30);
+	lvTest2.printLowerVoice();
+	cout << endl;
+
+	for (int i = 0; i < 10; i++) {
+		GenerateLowerVoice test(12);
+		test.printLowerVoice();
+	}
 
 	return 0;
 }

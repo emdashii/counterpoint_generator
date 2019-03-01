@@ -3,18 +3,16 @@
 #include <vector>
 using namespace::std;
 
-class GenerateLowerVoice
+class GenerateLowerVoice : Note
 {
 public:
-	GenerateLowerVoice();
-	GenerateLowerVoice(Note key = Note_C1, int length = 8);
+	GenerateLowerVoice(int length = 8);
 	~GenerateLowerVoice();
 	int pickRandomInterval();
-	Note convertIntervalToKey(Note noteBefore, int interval);
-	vector<Note> getLowerVoice() { return lowerVoice; }
+	vector<int> getLowerVoice() { return lowerVoice; }
+	void printLowerVoice();
 private:
-	vector<Note> lowerVoice();
-	Note key;
+	vector<int> lowerVoice;
 	int length;
 };
 

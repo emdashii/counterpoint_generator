@@ -3,33 +3,33 @@
   <Class Name="Note">
     <Position X="7" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AQABAAAAAAAAAAAAAAAgAAAAAAAAABAAAAEAAAEQAAA=</HashCode>
+      <HashCode>AQAAAABAAAAEAAAAQEAgAAAAAAAAABAAAAEAAAEAAAA=</HashCode>
       <FileName>Note.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SpeciesOne">
     <Position X="1.75" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAgAAAAABgAAAAAAAQAAAAAAgAAAAAQBQAA=</HashCode>
+      <HashCode>EAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAACABQQAAAA=</HashCode>
       <FileName>SpeciesOne.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SpeciesTwo">
     <Position X="0.75" Y="4.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAACBgAAAAAAAgAAAAAAgAAAAAABAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAACAAAQAAAAggAAAAAAAACAAwAAAAA=</HashCode>
       <FileName>SpeciesTwo.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SpeciesFour">
     <Position X="3" Y="4.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAABgAAAAAAAAAAIAAAgAAAAAABAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAAAAAABAAAgAAAIAAAAACAgQAAAAA=</HashCode>
       <FileName>SpeciesFour.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ExportToFile">
-    <Position X="5.5" Y="4.25" Width="2" />
+    <Position X="5.75" Y="5" Width="2" />
     <TypeIdentifier>
       <HashCode>AEAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAA=</HashCode>
       <FileName>ExportToFile.h</FileName>
@@ -38,7 +38,7 @@
   <Class Name="WritePhrase">
     <Position X="4.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAAEAIAEAEAAAAAAABAAAAAAQASAASAAA=</HashCode>
+      <HashCode>gAAAhEAAAAAAQEAAAAAAAAAAAAABEAAAAQAASAASAAA=</HashCode>
       <FileName>WritePhrase.h</FileName>
     </TypeIdentifier>
   </Class>

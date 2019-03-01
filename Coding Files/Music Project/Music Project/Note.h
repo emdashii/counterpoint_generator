@@ -146,9 +146,11 @@ public:
 	int getLength() { return length; }
 	void setNote(NoteType note) { this->note = note; } // TODO: Fix this function to take a Note type and update the enum
 	void setLength(int length) { this->length = length; }
+	NoteType convertIntToNote(int num, bool up);
 private:
 	NoteType note;
 	int length;
-
+protected:
+	NoteType key;
 };
 

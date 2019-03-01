@@ -9,10 +9,11 @@ class SpeciesFour :
 public:
 	SpeciesFour();
 	~SpeciesFour();
-	Note chooseNextNote();
+	/*Note chooseNextNote();
 	bool melodicRule4a();
 	bool melodicRule4b();
 	bool harmonicRule4a();
 	bool harmonicRule4b();
+	*/
 };
 

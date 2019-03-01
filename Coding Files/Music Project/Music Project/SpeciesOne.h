@@ -9,9 +9,9 @@ class SpeciesOne : public Species
 {
 public:
 	SpeciesOne();
-	SpeciesOne(Note noteBefore, Note noteBelow, Note beforeAndBelow);
+	//SpeciesOne(Note noteBefore, Note noteBelow, Note beforeAndBelow);
 	~SpeciesOne();
-	Note chooseNextNote();
+	/*Note chooseNextNote();
 	
 protected:
 	// Now for the species rules.....
@@ -19,5 +19,6 @@ protected:
 	bool melodicRule1b();
 	bool harmonicRule1a();
 	bool harmonicRule1b();
+	*/
 };
 

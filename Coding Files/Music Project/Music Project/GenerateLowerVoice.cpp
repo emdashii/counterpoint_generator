@@ -1,31 +1,32 @@
 #include "GenerateLowerVoice.h"
 #include <vector>
+#include <iostream>
 
 
-
-GenerateLowerVoice::GenerateLowerVoice()
-{
-	
-}
 //TODO: Finish generateLowerVoice
-GenerateLowerVoice::GenerateLowerVoice(Note key, int length) {
-	this->key = key;
+GenerateLowerVoice::GenerateLowerVoice(int length) {
 	this->length = length;
-	
-	lowerVoice.push_back(key);
-	int secondNote = 0;
-	switch (rand() % 2) {
-		case 0:
-			secondNote = 8;
-		case 1:
-			secondNote = 5;
-		default:
-			secondNote = 0;
+
+	lowerVoice.push_back(1);
+
+	for (int i = 0; i <= length - 3; i++) {
+		int nextNote;
+		if (lowerVoice.back() < -4) {
+			nextNote = lowerVoice.back() + pickRandomInterval() -1;
+		}
+		else if (lowerVoice.back() > 5) {
+			nextNote = lowerVoice.back() - pickRandomInterval() -1;
+		}
+		else if (rand() % 2 == 0) {
+			nextNote = lowerVoice.back() + pickRandomInterval() -1;
+		}
+		else {
+			nextNote = lowerVoice.back() - pickRandomInterval() -1;
+		}
+		lowerVoice.push_back(nextNote);
 	}
-	lowerVoice.push_back(convertIntervalToKey(secondNote));
-	for (int i = 0; i <= length-2, i++) {
-		lowerVoice.push_back(convertIntervalToKey(pickRandomInterval()));
-	}
+	lowerVoice.push_back(2);
+	lowerVoice.push_back(1);
 }
 
 
@@ -66,16 +67,11 @@ int GenerateLowerVoice::pickRandomInterval() {
 		return 2;
 	}
 }
-//TODO: Finish function convertIntervalToKey
-Note GenerateLowerVoice::convertIntervalToKey(Note noteBefore, int interval) {
-	switch(interval) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-		case 7:
-		case 8:
+
+void GenerateLowerVoice::printLowerVoice() {
+	cout << "Lower voice: ";
+	for (auto note : lowerVoice) {
+		cout << note << " ";
 	}
+	cout << endl;
 }
