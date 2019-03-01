@@ -9,10 +9,10 @@ public:
 	~Species();
 
 protected:
-	Note noteBefore;
-	Note noteBelow;
-	Note beforeAndBelow;
+	int noteBefore;
+	int noteBelow;
+	int beforeAndBelow;
 
-	virtual Note chooseNextNote() = 0;
+	virtual int chooseNextNote() = 0;
 };
 

@@ -77,6 +77,7 @@
 
 #include <iostream>
 #include "GenerateLowerVoice.h"
+#include "SpeciesOne.h"
 // #include <vector>
 // #include "Note.h"
 // #include "WritePhrase.h"
@@ -98,10 +99,10 @@ int main() {
 	lvTest2.printLowerVoice();
 	cout << endl << endl;
 
-	//THIS IS JUST A TEST :P
-	lvTest1.writeCheatTwoVoices();
+	SpeciesOne tijat;
+	tijat.writeImitativeTwoVoices();
 	cout << endl;
-	lvTest2.writeCheatTwoVoices();
+	tijat.writeImitativeTwoVoices(12);
 	cout << endl;
 
 	for (int i = 0; i < 10; i++) {
