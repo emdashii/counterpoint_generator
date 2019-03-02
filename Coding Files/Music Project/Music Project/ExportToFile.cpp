@@ -1,5 +1,7 @@
 #include "ExportToFile.h"
-
+#include <cstdlib>
+#include <iostream>
+#include "Note.h"
 
 
 ExportToFile::ExportToFile()
@@ -12,31 +14,53 @@ ExportToFile::~ExportToFile()
 }
 
 //TODO: Finish function convertIntervalToNote
-NoteType Note::convertIntToNote(int num, bool up) {
-	// key , noteBefore , up or down, then get next note
-/*	if (up) {
-		switch (interval) {
+Note ExportToFile::convertIntToNote(int num) {
+	Note temp;
+	
+	return temp;
+}
+
+int ExportToFile::convertScaleDegreeToHalfStep(int scaleDegree) {
+	int halfStep;
+	switch (((scaleDegree-1) % 7) + 1) {
+		case 0:
+			halfStep = 0;
+			break;
 		case 1:
+			halfStep = 2;
+			break;
 		case 2:
+			halfStep = 4;
+			break;
 		case 3:
+			halfStep = 5;
+			break;
 		case 4:
+			halfStep = 7;
+			break;
 		case 5:
+			halfStep = 9;
+			break;
 		case 6:
-		case 7:
-		case 8:
+			halfStep = 11;
+			break;
+		default:		// Because of modulo arithmetic, this should never happen
+			halfStep = 999;
+			//cerr << "ConvertScaleDegreeToHalfStep failed." << endl;
+			exit(1);
+			break;
 		}
+	return ((scaleDegree-1)/7)*12 + halfStep;
+}
+
+Note ExportToFile::convertKeyToNote() {
+	Note toReturn(Note_C4);
+	if (key == "C") {
+		toReturn.setNote(Note_C4);
+		return toReturn;
 	}
+	// Use else if for the rest of the key signatures
 	else {
-		switch (interval) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-		case 7:
-		case 8:
-		}
-	}*/
-	return Note_C1;
+		return toReturn;
+	}
 }

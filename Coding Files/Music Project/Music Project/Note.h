@@ -64,7 +64,7 @@ enum NoteType {
 	Note_A3_sharp = 37,
 	Note_B3_flat = 37,
 	Note_B3 = 38,
-	Note_C4 = 39,
+	Note_C4 = 39,	// Middle C
 	Note_C4_sharp = 40,
 	Note_D4_flat = 40,
 	Note_D4 = 41,
@@ -139,12 +139,12 @@ enum NoteType {
 class Note
 {
 public:
-	Note();
-	Note(NoteType note, int time);
+	
+	Note(NoteType note = Note_C4, int length = 4);
 	~Note();
 	NoteType getNote() { return note; }
 	int getLength() { return length; }
-	void setNote(NoteType note) { this->note = note; } // TODO: Fix this function to take a Note type and update the enum
+	void setNote(NoteType note) { this->note = note; }
 	void setLength(int length) { this->length = length; }
 	NoteType convertIntToNote(int num, bool up);
 private:
