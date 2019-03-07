@@ -28,6 +28,8 @@ protected:
 	void h_cannotCrossMelody();
 	void h_avoidDimFifth();
 	void h_noFourthOrSeventh();
-	
+
+	void m_noParallelFifths();
+	void m_noSimilarFifths();
 };
 
