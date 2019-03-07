@@ -11,7 +11,7 @@ public:
 protected:
 	int noteBefore;
 	int noteBelow;
-	int beforeAndBelow;
+	int noteBeforeAndBelow;
 
 	virtual int chooseNextNote() = 0;
 };

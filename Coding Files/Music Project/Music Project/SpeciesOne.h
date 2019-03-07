@@ -20,13 +20,14 @@ public:
 	int pickImitativeUp();
 	int pickImitativeDown();
 	void printImitativeCounterpoint(vector<int> upper, vector<int> lower);
-	/*
+	
 protected:
+	vector<int> noteOptions;
 	// Now for the species rules.....
-	bool melodicRule1a();
-	bool melodicRule1b();
-	bool harmonicRule1a();
-	bool harmonicRule1b();
-	*/
+	// h = harmonic, m = melodic
+	void h_cannotCrossMelody();
+	void h_avoidDimFifth();
+	void h_noFourthOrSeventh();
+	
 };
 

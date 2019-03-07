@@ -8,12 +8,12 @@ using namespace::std;
 
 // TODO: Complete this class
 
-class WritePhrase : Note
+class WritePhrase
 {
 public:
 	WritePhrase(int measureLength, int beatsPerMeasure, int speciesType);
 	~WritePhrase();
-	void setSeed(int seed);
+	static void setSeed();
 	int getMeasureLength() { return measureLength; }
 	int getBeatsPerMeasure() { return beatsPerMeasure; }
 	int getSpeciesType() { return speciesType; }

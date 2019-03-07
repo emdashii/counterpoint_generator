@@ -12,7 +12,13 @@ SpeciesOne::~SpeciesOne()
 }
 
 int SpeciesOne::chooseNextNote() {
-	return 0;
+	noteOptions.clear();
+	h_cannotCrossMelody(); // fills in a range above and equal to note below
+	h_avoidDimFifth();
+	h_noFourthOrSeventh();
+
+	int toChoose = (rand() % noteOptions.size()) + 1;
+	return noteOptions.at(toChoose);
 }
 
 
@@ -109,5 +115,32 @@ void SpeciesOne::printImitativeCounterpoint(vector<int> upper, vector<int> lower
 		cout << note << "\t";
 	}
 	cout << endl;
+}
+
+void SpeciesOne::h_cannotCrossMelody() {
+	for (int i = noteBelow; i < 15; i++) {
+		noteOptions.push_back(i);
+	}
+}
+
+void SpeciesOne::h_avoidDimFifth() {
+	if ((noteBelow == 0) || (noteBelow == 7)) {
+		// 5ths not allowed in this case
+		vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 4);
+		if (itr != noteOptions.end()) {
+			noteOptions.erase(itr);
+		}
+	}
+}
+
+void SpeciesOne::h_noFourthOrSeventh() {
+	vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 3);
+	if (itr != noteOptions.end()) {
+		noteOptions.erase(itr);
+	}
+	vector<int>::iterator itrr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 6);
+	if (itrr != noteOptions.end()) {
+		noteOptions.erase(itr);
+	}
 }
 

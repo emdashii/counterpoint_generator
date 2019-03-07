@@ -78,12 +78,12 @@
 #include <iostream>
 #include "GenerateLowerVoice.h"
 #include "SpeciesOne.h"
+#include "WritePhrase.h"
 // #include <vector>
 // #include "Note.h"
 // #include "WritePhrase.h"
 // #include "SpeciesTwo.h"
 // #include "SpeciesFour.h"
-// #include "SpeciesOne.h"
 
 using namespace std;
 
@@ -91,6 +91,7 @@ using namespace std;
 void GenerateNoteEnum();
 
 int main() {
+	WritePhrase::setSeed();
 
 	//GenerateNoteEnum();
 	GenerateLowerVoice lvTest1;

@@ -10,7 +10,8 @@ WritePhrase::~WritePhrase()
 {
 }
 
-void WritePhrase::setSeed(int seed) {
+void WritePhrase::setSeed() {
+	double seed;
 	cout << "Enter seed for random numbers: ";
 	cin >> seed;
 	while (cin.fail()) {
