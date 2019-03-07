@@ -18,10 +18,18 @@ public:
 	int getBeatsPerMeasure() { return beatsPerMeasure; }
 	int getSpeciesType() { return speciesType; }
 	int getTotalLength() { return measureLength * beatsPerMeasure; }
+
+	// from Export to file - moved here
+	Note convertIntToNote(int num);
+	int convertScaleDegreeToHalfStep(int halfStep);
+	Note convertKeyToNote();
+	void setKey(string key) { this->key = key; }
+
+private:
+	string key;
 	int measureLength;
 	int beatsPerMeasure;
 	int speciesType;
-private:
 	void writeLowerVoice();
 	void writeUpperVoice(int speciesType);
 	vector<Note> upperVoice;

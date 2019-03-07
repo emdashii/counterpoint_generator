@@ -1,22 +1,21 @@
 #pragma once
 #include "Note.h"
 #include <string>
+#include <vector>
 using namespace::std;
 
 // TODO: Complete this class -- Caleb
 class ExportToFile
 {
 public:
-	ExportToFile();
+	ExportToFile(vector<Note> upperVoice, vector<Note> lowerVoice, string fileName);
 	~ExportToFile();
-	// Run this class to combine everything and create a new file.
-	void baseFileHeader();
-	void writeIntoFile();
-	Note convertIntToNote(int num);
-	int convertScaleDegreeToHalfStep(int halfStep);
-	Note convertKeyToNote();
-	void setKey(string key) { this->key = key; }
+	void exportUpperVoice();
+	void exportLowerVoice();
+
+	// NOTE -- https://www.hacklily.org/
+	
 protected:
-	string key;
+	
 };
 
