@@ -135,20 +135,16 @@ enum NoteType {
 	Note_C8 = 87,
 };
 
-// TODO: Complete this class
 class Note
 {
 public:
-	
 	Note(NoteType note = Note_C4, int length = 4);
 	~Note();
 	NoteType getNote() { return note; }
 	int getLength() { return length; }
 	void setNote(NoteType note) { this->note = note; }
 	void setLength(int length) { this->length = length; }
-	NoteType convertIntToNote(int num, bool up);
 private:
 	NoteType note;
 	int length;
 };
-

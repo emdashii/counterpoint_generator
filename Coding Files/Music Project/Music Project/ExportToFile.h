@@ -15,6 +15,7 @@ public:
 	Note convertIntToNote(int num);
 	int convertScaleDegreeToHalfStep(int halfStep);
 	Note convertKeyToNote();
+	void setKey(string key) { this->key = key; }
 protected:
 	string key;
 };

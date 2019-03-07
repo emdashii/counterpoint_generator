@@ -13,11 +13,12 @@ ExportToFile::~ExportToFile()
 {
 }
 
-//TODO: Finish function convertIntervalToNote
 Note ExportToFile::convertIntToNote(int num) {
-	Note temp;
-	
-	return temp;
+	Note key = convertKeyToNote();
+	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote();
+	NoteType val = static_cast<NoteType>(computeNext);
+	Note newNote(val, 4);
+	return newNote;
 }
 
 int ExportToFile::convertScaleDegreeToHalfStep(int scaleDegree) {
@@ -59,7 +60,50 @@ Note ExportToFile::convertKeyToNote() {
 		toReturn.setNote(Note_C4);
 		return toReturn;
 	}
-	// Use else if for the rest of the key signatures
+	else if (key == "Db") {
+		toReturn.setNote(Note_D4_flat);
+		return toReturn;
+	}
+	else if (key == "D") {
+		toReturn.setNote(Note_D4);
+		return toReturn;
+	}
+	else if (key == "Eb") {
+		toReturn.setNote(Note_E4_flat);
+		return toReturn;
+	}
+	else if (key == "E") {
+		toReturn.setNote(Note_E4);
+		return toReturn;
+	}
+	else if (key == "F") {
+		toReturn.setNote(Note_F4);
+		return toReturn;
+	}
+	else if (key == "F#") {
+		toReturn.setNote(Note_F4_sharp);
+		return toReturn;
+	}
+	else if (key == "G") {
+		toReturn.setNote(Note_G4);
+		return toReturn;
+	}
+	else if (key == "Ab") {
+		toReturn.setNote(Note_A3_flat);
+		return toReturn;
+	}
+	else if (key == "A") {
+		toReturn.setNote(Note_A3);
+		return toReturn;
+	}
+	else if (key == "Bb") {
+		toReturn.setNote(Note_B3_flat);
+		return toReturn;
+	}
+	else if (key == "B") {
+		toReturn.setNote(Note_B3);
+		return toReturn;
+	}
 	else {
 		return toReturn;
 	}
