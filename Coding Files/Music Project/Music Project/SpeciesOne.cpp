@@ -17,6 +17,9 @@ int SpeciesOne::chooseNextNote() {
 	h_avoidDimFifth();
 	h_noFourthOrSeventh();
 
+	m_noParallelFifths();
+	m_noSimilarFifths();
+
 	int toChoose = (rand() % noteOptions.size()) + 1;
 	return noteOptions.at(toChoose);
 }
@@ -134,13 +137,42 @@ void SpeciesOne::h_avoidDimFifth() {
 }
 
 void SpeciesOne::h_noFourthOrSeventh() {
+	// Find any perfect fourths
 	vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 3);
 	if (itr != noteOptions.end()) {
-		noteOptions.erase(itr);
+		noteOptions.erase(itr);	// Remove them
 	}
+	// Find any 7ths
 	vector<int>::iterator itrr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 6);
 	if (itrr != noteOptions.end()) {
-		noteOptions.erase(itr);
+		noteOptions.erase(itr);	// Remove them
+	}
+}
+
+void SpeciesOne::m_noParallelFifths() {
+	if ((noteBefore - 4) == noteBeforeAndBelow) {
+		// 5ths not allowed in this case
+		vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 4);
+		if (itr != noteOptions.end()) {
+			noteOptions.erase(itr);
+		}
+	}
+}
+
+void SpeciesOne::m_noSimilarFifths() {
+	if ((noteBeforeAndBelow > noteBelow) && ((noteBefore - 4) >= noteBeforeAndBelow)) {
+		// 5ths not allowed in this case
+		vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 4);
+		if (itr != noteOptions.end()) {
+			noteOptions.erase(itr);
+		}
+	}
+	if ((noteBeforeAndBelow < noteBelow) && ((noteBefore - 4) <= noteBeforeAndBelow)) {
+		// 5ths not allowed in this case
+		vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 4);
+		if (itr != noteOptions.end()) {
+			noteOptions.erase(itr);
+		}
 	}
 }
 
