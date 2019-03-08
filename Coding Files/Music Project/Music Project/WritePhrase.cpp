@@ -1,9 +1,13 @@
 #include "WritePhrase.h"
 #include <cstdlib>          // for rand
 #include <iostream>
+#include "GenerateLowerVoice.h"
 
 
 WritePhrase::WritePhrase(int measureLength, int beatsPerMeasure, int speciesType) {
+	//GenerateLowerVoice(measureLength) lower;
+	//vector<int> lowerVoice = lower.getLowerVoice;
+	//SpeciesOne upper;
 }
 
 WritePhrase::~WritePhrase()
