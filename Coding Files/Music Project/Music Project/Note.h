@@ -64,7 +64,8 @@ enum NoteType {
 	Note_A3_sharp = 37,
 	Note_B3_flat = 37,
 	Note_B3 = 38,
-	Note_C4 = 39,	// Middle C
+	Note_C4 = 39,
+	// Middle C
 	Note_C4_sharp = 40,
 	Note_D4_flat = 40,
 	Note_D4 = 41,
@@ -135,16 +136,14 @@ enum NoteType {
 	Note_C8 = 87,
 };
 
-class Note
-{
+class Note {
 public:
-	Note(NoteType note = Note_C4, int length = 4);
-	~Note();
+	Note(NoteType note, int length = 4);
 	NoteType getNote() { return note; }
 	int getLength() { return length; }
 	void setNote(NoteType note) { this->note = note; }
 	void setLength(int length) { this->length = length; }
 private:
-	NoteType note;
-	int length;
+	NoteType note = Note_C4;
+	int length = 4;
 };

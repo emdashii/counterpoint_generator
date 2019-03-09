@@ -119,6 +119,7 @@
     <ClCompile Include="GenerateLowerVoice.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Note.cpp" />
+    <ClCompile Include="Phrase.cpp" />
     <ClCompile Include="Species.cpp" />
     <ClCompile Include="SpeciesFour.cpp" />
     <ClCompile Include="SpeciesOne.cpp" />
@@ -129,6 +130,7 @@
     <ClInclude Include="ExportToFile.h" />
     <ClInclude Include="GenerateLowerVoice.h" />
     <ClInclude Include="Note.h" />
+    <ClInclude Include="Phrase.h" />
     <ClInclude Include="Species.h" />
     <ClInclude Include="SpeciesFour.h" />
     <ClInclude Include="SpeciesOne.h" />

@@ -8,8 +8,7 @@ using namespace::std;
 
 // TODO: Complete this class
 
-class WritePhrase
-{
+class WritePhrase {
 public:
 	WritePhrase(int measureLength, int beatsPerMeasure, int speciesType);
 	~WritePhrase();
@@ -34,4 +33,3 @@ private:
 	void writeUpperVoice(int speciesType);
 	vector<Note> upperVoice;
 };
-

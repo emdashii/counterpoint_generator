@@ -111,6 +111,14 @@ int main() {
 		test.printLowerVoice();
 	}
 
+
+	try {
+		
+	}
+	catch (runtime_error &exception) {
+		cout << exception.what() << endl;
+	}
+
 	return 0;
 }
 
@@ -132,6 +140,38 @@ void GenerateNoteEnum() {
 
 		// Print note assignment line for current note
 		cout << "Note_" << letter << keyLabelNumber << " = " << keyNumber << "," << endl;
+
+		// If necessary, print note assignment lines for sharps and flats
+		if (letter != 'B' && letter != 'E' && keyNumber < 87) {
+			keyNumber++;
+			// Print note assignment line for current letter's sharp
+			cout << "Note_" << letter << keyLabelNumber << "_sharp" << " = " << keyNumber << "," << endl;
+			// Print note assignment line for next letter's flat
+			char nextLetter = letter + 1;
+			if (nextLetter == 'H') nextLetter = 'A';
+			cout << "Note_" << nextLetter << keyLabelNumber << "_flat" << " = " << keyNumber << "," << endl;
+		}
+
+		// Increment values
+		letter++;
+	}
+}
+
+void GenerateNoteConversionCases() {
+	char letter = 'A';
+	int keyNumber = 0;
+	int keyLabelNumber = 0;
+
+	for (; keyNumber < 88; keyNumber++) {
+
+		// Check and update letter and keyLabelNumber
+		if (letter == 'H') letter = 'A';
+		if (letter == 'C') keyLabelNumber++;
+
+		// Print case for current note
+		//TODO NOT DONE WITH THIS
+		cout << "case: Note_" << letter << keyLabelNumber << " = " << keyNumber << "," << endl;
+		cout << "	return \"" << tolower(letter) << "'" << "\" + to_string(note.getLength);" << endl;
 
 		// If necessary, print note assignment lines for sharps and flats
 		if (letter != 'B' && letter != 'E' && keyNumber < 87) {
