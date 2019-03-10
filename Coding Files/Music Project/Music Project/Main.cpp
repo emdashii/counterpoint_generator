@@ -89,30 +89,13 @@ using namespace std;
 
 //HACK TEMP DECLARATION
 void GenerateNoteEnum();
+void tests();
 
 int main() {
 	WritePhrase::setSeed();
 
-	//GenerateNoteEnum();
-	GenerateLowerVoice lvTest1;
-	lvTest1.printLowerVoice();
-	GenerateLowerVoice lvTest2(14);
-	lvTest2.printLowerVoice();
-	cout << endl << endl;
-
-	SpeciesOne tijat;
-	tijat.writeImitativeTwoVoices();
-	cout << endl;
-	tijat.writeImitativeTwoVoices(12);
-	cout << endl;
-
-	for (int i = 0; i < 10; i++) {
-		GenerateLowerVoice test(12);
-		test.printLowerVoice();
-	}
-
-
 	try {
+		//tests();
 		
 	}
 	catch (runtime_error &exception) {
@@ -157,7 +140,6 @@ void GenerateNoteEnum() {
 	}
 }
 
-<<<<<<< HEAD
 void GenerateNoteConversionCases() {
 	char letter = 'A';
 	int keyNumber = 0;
@@ -188,10 +170,10 @@ void GenerateNoteConversionCases() {
 		// Increment values
 		letter++;
 	}
-=======
+
 void tests() {
 
-	/*
+	GenerateNoteEnum();
 	GenerateLowerVoice lvTest1;
 	lvTest1.printLowerVoice();
 	GenerateLowerVoice lvTest2(14);
@@ -208,6 +190,4 @@ void tests() {
 		GenerateLowerVoice test(12);
 		test.printLowerVoice();
 	}
-	*/
->>>>>>> 2c79a1e402654b12bfc34173dadb941c4064cc4d
 }
