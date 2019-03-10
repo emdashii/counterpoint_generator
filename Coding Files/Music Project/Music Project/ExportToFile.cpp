@@ -5,6 +5,38 @@
 #include "Note.h"
 
 
+ExportToFile::ExportToFile(string fileName, string musicTitle, string composer, string key) : title(musicTitle), composer(composer) {
+	//TODO verify key before assignment
+	this->key = key;
+
+	//TODO may want to change this ending to proper lily pond file extension, but leaving like this for now for testing purposes
+	// Put ending of .txt on the end of the filename if it doesn't have that ending already
+	if (fileName.length() < 4) {
+		fileName += ".txt";
+	}
+	else if (fileName.compare(fileName.length() - 4, fileName.length(), ".txt")) { // returns 0 if it does have that ending
+		fileName += ".txt";
+	}
+
+	//TODO revise this
+	// // Check to see if that file already exists, so we don't accidentally overwrite it or have to append to it
+	// ifstream inputFileStream(outputFileName.c_str());
+	// if (inputFileStream) {
+	// 	cout << "Warning, that file already exists! Please choose a new file name." << endl;
+	// 	invalidName = true;
+	// 	inputFileStream.close();
+	// 	continue;
+	// }
+	// inputFileStream.close();
+
+
+	this->fileName = fileName;
+}
+
+void ExportToFile::addPhrase(Phrase* phrase) {
+	phrases.push_back(phrase);
+}
+
 void ExportToFile::WriteOutput() {
 
 	// Open/create file for output
@@ -24,10 +56,10 @@ void ExportToFile::WriteOutput() {
 		<< "tagline = \"Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program\"" << endl
 		<< "}" << endl
 		<< "\\paper {" << endl
-		<< "	system - system - spacing #'basic-distance = #16" << endl
+		<< "	system-system-spacing #'basic-distance = #16" << endl
 		<< "}" << endl
 		// Leaving this line hard coded here for now, we may want to change this later
-		<< "global = { \\key c \\major \\time 4 / 4 }" << endl << endl << endl;
+		<< "global = { \\key c \\major \\time 4/4 }" << endl << endl << endl;
 
 	// Loop through phrases to be printed
 	int numPhrases = 0;
@@ -43,7 +75,7 @@ void ExportToFile::WriteOutput() {
 		<< "			\\new Voice = \"one\" {" << endl
 		<< "				\\global" << endl;
 	// Write the phrase names to be printed
-	for (int i = 1; i == numPhrases; i++) {
+	for (int i = 1; i <= numPhrases; i++) {
 		outputFileStream << "				\\\"topPhrase" << i << "\"" << endl;
 	}
 	outputFileStream << "			}" << endl; // End top voice info
@@ -53,7 +85,7 @@ void ExportToFile::WriteOutput() {
 		<< "			\\new Voice = \"one\" {" << endl
 		<< "				\\global" << endl;
 	// Write the phrase names to be printed
-	for (int i = 1; i == numPhrases; i++) {
+	for (int i = 1; i <= numPhrases; i++) {
 		outputFileStream << "				\\\"bottomPhrase" << i << "\"" << endl;
 	}
 	outputFileStream << "			}" << endl; // End bottom voice info
@@ -68,8 +100,75 @@ void ExportToFile::WriteOutput() {
 	outputFileStream.close();
 }
 
+void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& outputFileStream) {
+	// Set top and bottom phrase names
+	string topPhraseName = "\"topPhrase" + to_string(phraseNumber) + "\"";
+	string bottomPhraseName = "\"bottomPhrase" + to_string(phraseNumber) + "\"";
+
+	// write comment with phrase info
+	outputFileStream << "% Phrase " << phraseNumber << endl;
+	// Leaving this hardcoded for now as well, may want to change later
+	outputFileStream << topPhraseName << " = { \\clef \"treble\" \\key c \\major \\time 4/4" << endl;
+	// Time to print out the notes for the top voice of this phrase
+	for (auto note : phrase.getUpperVoice()) {
+		outputFileStream << " " << convertNoteToOutput(*note);
+	}
+	// End top voice of this phrase
+	outputFileStream << "\\bar \"||\" }" << endl;
+
+	// Leaving this hardcoded for now as well, may want to change later
+	outputFileStream << bottomPhraseName << " = { \\clef \"treble\" \\key c \\major \\time 4/4" << endl;
+	// Time to print out the notes for the bottom voice of this phrase
+	for (auto note : phrase.getLowerVoice()) {
+		outputFileStream << " " << convertNoteToOutput(*note);
+	}
+	// End bottom voice of this phrase
+	outputFileStream << "}" << endl;
+}
+
+// General output outline
+/*
+ 
+\header {
+title = "Epic Title"
+composer = "Cool Composer"
+tagline = "Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program"
+}
+
+\paper {
+  system-system-spacing #'basic-distance = #16
+}
+global = { \key c \major \time 4/4 }
+
+
+% Phrase one. Imitative counterpoint a 5th above. C major.
+"topPhrase1" = { \clef "treble" \key c \major \time 4/4
+NOTES_HERE \bar "||" }
+"bottomPhrase1" = { \clef "treble" \key c \major \time 4/4
+NOTES_HERE}
+
+
+
+\score {
+  <<
+	<<
+	  \new Voice = "one" {
+		\global
+		\"topPhrase1"
+	  }
+	  >>
+	  \new Voice = "two" {
+		\global
+		\"bottomPhrase1"
+	  }
+  >>
+	\layout{}
+	\midi{}
+}
+
+ */
+
 string ExportToFile::convertNoteToOutput(Note note) {
-	//TODO NOT DONE, working on writing another function to write this function for me....
 	switch (note.getNote()) {
 	case Note_A0:
 		return "a,,," + to_string(note.getLength());
@@ -336,74 +435,6 @@ string ExportToFile::convertNoteToOutput(Note note) {
 		return "c'''''" + to_string(note.getLength());
 		break;
 	default:
-		return "ERROR";
+		throw runtime_error("Error, could not convert note to proper output for lily pond!");
 	}
 }
-
-void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& outputFileStream) {
-	// Set top and bottom phrase names
-	string topPhraseName = "\"topPhrase" + to_string(phraseNumber) + "\"";
-	string bottomPhraseName = "\"bottomPhrase" + to_string(phraseNumber) + "\"";
-
-	// write comment with phrase info
-	outputFileStream << "% Phrase " << phraseNumber << endl;
-	// Leaving this hardcoded for now as well, may want to change later
-	outputFileStream << topPhraseName << " = { \\clef \"treble\" \\key c \\major \\time 4 / 4" << endl;
-	// Time to print out the notes for the top voice of this phrase
-	for (auto note : phrase.getUpperVoice()) {
-		outputFileStream << " " << convertNoteToOutput(*note);
-	}
-	// End top voice of this phrase
-	outputFileStream << "\\bar \"||\" }" << endl;
-
-	// Leaving this hardcoded for now as well, may want to change later
-	outputFileStream << bottomPhraseName << " = { \\clef \"treble\" \\key c \\major \\time 4 / 4" << endl;
-	// Time to print out the notes for the bottom voice of this phrase
-	for (auto note : phrase.getLowerVoice()) {
-		outputFileStream << " " << convertNoteToOutput(*note);
-	}
-	// End bottom voice of this phrase
-	outputFileStream << "}" << endl;
-}
-
-// General output outline
-/*
- 
-\header {
-title = "Epic Title"
-composer = "Cool Composer"
-tagline = "Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program"
-}
-
-\paper {
-  system-system-spacing #'basic-distance = #16
-}
-global = { \key c \major \time 4/4 }
-
-
-% Phrase one. Imitative counterpoint a 5th above. C major.
-"topPhrase1" = { \clef "treble" \key c \major \time 4/4
-NOTES_HERE \bar "||" }
-"bottomPhrase1" = { \clef "treble" \key c \major \time 4/4
-NOTES_HERE}
-
-
-
-\score {
-  <<
-	<<
-	  \new Voice = "one" {
-		\global
-		\"topPhrase1"
-	  }
-	  >>
-	  \new Voice = "two" {
-		\global
-		\"bottomPhrase1"
-	  }
-  >>
-	\layout{}
-	\midi{}
-}
-
- */

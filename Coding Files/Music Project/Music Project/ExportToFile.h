@@ -10,13 +10,11 @@ using namespace std;
 // NOTE -- https://www.hacklily.org/
 class ExportToFile {
 public:
-	// Constructor with desired output file name
+	// Constructor with desired output file info
 	ExportToFile(string fileName, string musicTitle, string composer, string key = "c");
-	// Destructor
-	~ExportToFile();
 
 	// Add phrase function
-	void addPhrase(Phrase phrase);
+	void addPhrase(Phrase* phrase);
 
 	// Final output function, writes all phrases and everything
 	void WriteOutput();
@@ -34,7 +32,4 @@ private:
 	// Write just the notes for a single phrase
 	string convertNoteToOutput(Note note);
 	void writePhrase(Phrase phrase, int phraseNumber, ofstream &outputFileStream);
-
-protected:
-
 };

@@ -76,11 +76,13 @@
 
 
 #include <iostream>
+#include <vector>
+#include <string>
+#include "ExportToFile.h"
 #include "GenerateLowerVoice.h"
 #include "SpeciesOne.h"
 #include "WritePhrase.h"
-#include <string>
-// #include <vector>
+#include "Phrase.h"
 // #include "Note.h"
 // #include "WritePhrase.h"
 // #include "SpeciesTwo.h"
@@ -95,7 +97,27 @@ string getSuffix(int keyLabelNumber);
 void tests();
 
 int main() {
-	WritePhrase::setSeed();
+	Note note1(Note_C4, 4);
+	Note note2(Note_C4, 2);
+	Note note3(Note_D4, 4);
+	Note note4(Note_D4, 2);
+
+	vector<Note*> upperPhrase1 = { &note1, &note2 };
+	vector<Note*> lowerPhrase1 = { &note3, &note4 };
+	vector<Note*> upperPhrase2 = { &note2, &note1 };
+	vector<Note*> lowerPhrase2 = { &note4, &note3 };
+
+	//	Create some phrases
+	Phrase phrase1(upperPhrase1, lowerPhrase1);
+	Phrase phrase2(upperPhrase2, lowerPhrase2);
+
+	ExportToFile exportTest("lilyPondOutput1", "noice title", "caleb is a great composer");
+	exportTest.addPhrase(&phrase1);
+	exportTest.addPhrase(&phrase2);
+	// export
+	exportTest.WriteOutput();
+
+	// WritePhrase::setSeed();
 
 	try {
 		//tests();
@@ -111,7 +133,6 @@ int main() {
 /**
  * @brief
  * This function is used to generate the code for the Note enum -- please don't remove this function as we may want to use it later
- * 
  */
 void GenerateNoteEnum() {
 	char letter = 'A';
@@ -142,7 +163,10 @@ void GenerateNoteEnum() {
 		letter++;
 	}
 }
-
+/**
+ * @brief
+ * This function is used to generate the code for the ExportToFile::convertNoteToOutput function -- please don't remove this function as we may want to use it later
+ */
 void GenerateNoteConversionCases() {
 	char letter = 'A';
 	int keyNumber = 0;
@@ -187,7 +211,10 @@ void GenerateNoteConversionCases() {
 		letter++;
 	}
 }
-
+/**
+ * @brief
+ * This function is a helper function for the one above used to generate the code for the ExportToFile::convertNoteToOutput function -- please don't remove this function as we may want to use it later
+ */
 string getSuffix(int keyLabelNumber) {
 	switch (keyLabelNumber) {
 	case 0:
@@ -218,8 +245,7 @@ string getSuffix(int keyLabelNumber) {
 		return "'''''";
 		break;
 	default:
-		cout << "ERROR!" << endl;
-		return "-----ERROR----";
+		throw runtime_error("Error could not get proper suffix when converting NoteType to output for lily pond!");
 	}
 }
 

@@ -7,9 +7,14 @@ using namespace std;
 // TODO complete this class
 class Phrase {
 public:
-	Phrase();
-	~Phrase();
+	// Constructor
+	Phrase(vector<Note*> upperVoice = {}, vector<Note*> lowerVoice = {});
 
+	// Mutators
+	void addNoteToUpperVoice(Note* note) { upperVoice.push_back(note); }
+	void addNoteToLowerVoice(Note* note) { lowerVoice.push_back(note); }
+
+	// Accessors
 	vector<Note*> getUpperVoice() {	return upperVoice; }
 	vector<Note*> getLowerVoice() { return lowerVoice; }
 
