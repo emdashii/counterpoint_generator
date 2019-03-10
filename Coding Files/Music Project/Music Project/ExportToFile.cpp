@@ -98,6 +98,9 @@ void ExportToFile::WriteOutput() {
 
 	// Close the file
 	outputFileStream.close();
+
+	// Report Success
+	cout << "Final output file successfully created!" << endl;
 }
 
 void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& outputFileStream) {

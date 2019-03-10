@@ -97,25 +97,6 @@ string getSuffix(int keyLabelNumber);
 void tests();
 
 int main() {
-	Note note1(Note_C4, 4);
-	Note note2(Note_C4, 2);
-	Note note3(Note_D4, 4);
-	Note note4(Note_D4, 2);
-
-	vector<Note*> upperPhrase1 = { &note1, &note2 };
-	vector<Note*> lowerPhrase1 = { &note3, &note4 };
-	vector<Note*> upperPhrase2 = { &note2, &note1 };
-	vector<Note*> lowerPhrase2 = { &note4, &note3 };
-
-	//	Create some phrases
-	Phrase phrase1(upperPhrase1, lowerPhrase1);
-	Phrase phrase2(upperPhrase2, lowerPhrase2);
-
-	ExportToFile exportTest("lilyPondOutput1", "noice title", "caleb is a great composer");
-	exportTest.addPhrase(&phrase1);
-	exportTest.addPhrase(&phrase2);
-	// export
-	exportTest.WriteOutput();
 
 	// WritePhrase::setSeed();
 
@@ -254,6 +235,28 @@ void tests() {
 	GenerateNoteEnum();
 	
 	GenerateNoteConversionCases();
+
+	// Test Final Export function
+		Note note1(Note_C4, 4);
+		Note note2(Note_C4, 2);
+		Note note3(Note_D4, 4);
+		Note note4(Note_D4, 2);
+
+		vector<Note*> upperPhrase1 = { &note1, &note2 };
+		vector<Note*> lowerPhrase1 = { &note3, &note4 };
+		vector<Note*> upperPhrase2 = { &note2, &note1 };
+		vector<Note*> lowerPhrase2 = { &note4, &note3 };
+
+		//	Create some phrases
+		Phrase phrase1(upperPhrase1, lowerPhrase1);
+		Phrase phrase2(upperPhrase2, lowerPhrase2);
+
+		ExportToFile exportTest("lilyPondOutput1", "noice title", "caleb is a great composer");
+		exportTest.addPhrase(&phrase1);
+		exportTest.addPhrase(&phrase2);
+		// export
+		exportTest.WriteOutput();
+
 
 	GenerateLowerVoice lvTest1;
 	lvTest1.printLowerVoice();
