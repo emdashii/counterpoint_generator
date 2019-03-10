@@ -19,6 +19,8 @@ int SpeciesOne::chooseNextNote() {
 
 	m_noParallelFifths();
 	m_noSimilarFifths();
+	m_noParallelOctaves();
+	m_noSimilarOctaves();
 
 	int toChoose = (rand() % noteOptions.size()) + 1;
 	return noteOptions.at(toChoose);
@@ -173,6 +175,40 @@ void SpeciesOne::m_noSimilarFifths() {
 		if (itr != noteOptions.end()) {
 			noteOptions.erase(itr);
 		}
+	}
+}
+
+void SpeciesOne::m_noParallelOctaves() {
+	if ((noteBefore - 7) == noteBeforeAndBelow) {
+		// 5ths not allowed in this case
+		vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 7);
+		if (itr != noteOptions.end()) {
+			noteOptions.erase(itr);
+		}
+	}
+}
+
+void SpeciesOne::m_noSimilarOctaves() {
+	if ((noteBeforeAndBelow > noteBelow) && ((noteBefore - 7) >= noteBeforeAndBelow)) {
+		// 5ths not allowed in this case
+		vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 7);
+		if (itr != noteOptions.end()) {
+			noteOptions.erase(itr);
+		}
+	}
+	if ((noteBeforeAndBelow < noteBelow) && ((noteBefore - 7) <= noteBeforeAndBelow)) {
+		// 5ths not allowed in this case
+		vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 7);
+		if (itr != noteOptions.end()) {
+			noteOptions.erase(itr);
+		}
+	}
+}
+
+void SpeciesOne::m_noSameNote() {
+	vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBefore);
+	if (itr != noteOptions.end()) {
+		noteOptions.erase(itr);
 	}
 }
 

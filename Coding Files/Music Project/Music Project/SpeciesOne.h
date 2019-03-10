@@ -20,6 +20,7 @@ public:
 	int pickImitativeUp();
 	int pickImitativeDown();
 	void printImitativeCounterpoint(vector<int> upper, vector<int> lower);
+	vector<int> getNoteOptions() { return noteOptions; }
 	
 protected:
 	vector<int> noteOptions;
@@ -31,5 +32,8 @@ protected:
 
 	void m_noParallelFifths();
 	void m_noSimilarFifths();
+	void m_noParallelOctaves();
+	void m_noSimilarOctaves();
+	void m_noSameNote();
 };
 

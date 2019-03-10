@@ -32,4 +32,5 @@ private:
 	void writeLowerVoice();
 	void writeUpperVoice(int speciesType);
 	vector<Note> upperVoice;
+	vector<Note> lowerVoice;
 };
