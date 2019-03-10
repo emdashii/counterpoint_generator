@@ -9,28 +9,28 @@ using namespace std;
  * 
  */
 enum NoteType {
-	Note_A0 = 0,
-	Note_A0_sharp = 1,
-	Note_B0_flat = 1,
-	Note_B0 = 2,
-	Note_C1 = 3,
-	Note_C1_sharp = 4,
-	Note_D1_flat = 4,
-	Note_D1 = 5,
-	Note_D1_sharp = 6,
-	Note_E1_flat = 6,
-	Note_E1 = 7,
-	Note_F1 = 8,
-	Note_F1_sharp = 9,
-	Note_G1_flat = 9,
-	Note_G1 = 10,
-	Note_G1_sharp = 11,
-	Note_A1_flat = 11,
-	Note_A1 = 12,
+	Note_A0 = 0,		// a,,,
+	Note_A0_sharp = 1,	// ais,,,
+	Note_B0_flat = 1,	// bes,,,
+	Note_B0 = 2,		// b,,,
+	Note_C1 = 3,		//c,,		<-- switches here
+	Note_C1_sharp = 4,	//cis,,
+	Note_D1_flat = 4,	//des,,
+	Note_D1 = 5,		//d,,
+	Note_D1_sharp = 6,	//dis,,
+	Note_E1_flat = 6,	//ees,,
+	Note_E1 = 7,		//e,,
+	Note_F1 = 8,		//f,,
+	Note_F1_sharp = 9,	//fis,,
+	Note_G1_flat = 9,	//ges,,
+	Note_G1 = 10,		//g,,
+	Note_G1_sharp = 11,	//gis,,
+	Note_A1_flat = 11,	//aes,,
+	Note_A1 = 12,		//a,,
 	Note_A1_sharp = 13,
 	Note_B1_flat = 13,
 	Note_B1 = 14,
-	Note_C2 = 15,
+	Note_C2 = 15,		// c,		<-- switches here
 	Note_C2_sharp = 16,
 	Note_D2_flat = 16,
 	Note_D2 = 17,
@@ -42,12 +42,12 @@ enum NoteType {
 	Note_G2_flat = 21,
 	Note_G2 = 22,
 	Note_G2_sharp = 23,
-	Note_A2_flat = 23,
+	Note_A2_flat = 23,	//aes
 	Note_A2 = 24,
 	Note_A2_sharp = 25,
 	Note_B2_flat = 25,
 	Note_B2 = 26,
-	Note_C3 = 27,
+	Note_C3 = 27,		// c		<-- switches here
 	Note_C3_sharp = 28,
 	Note_D3_flat = 28,
 	Note_D3 = 29,
@@ -64,8 +64,7 @@ enum NoteType {
 	Note_A3_sharp = 37,
 	Note_B3_flat = 37,
 	Note_B3 = 38,
-	Note_C4 = 39,
-	// Middle C
+	Note_C4 = 39,		// Middle C  == c'	<-- switches here
 	Note_C4_sharp = 40,
 	Note_D4_flat = 40,
 	Note_D4 = 41,
@@ -82,7 +81,7 @@ enum NoteType {
 	Note_A4_sharp = 49,
 	Note_B4_flat = 49,
 	Note_B4 = 50,
-	Note_C5 = 51,
+	Note_C5 = 51,		// c''		<-- switches here
 	Note_C5_sharp = 52,
 	Note_D5_flat = 52,
 	Note_D5 = 53,
@@ -99,7 +98,7 @@ enum NoteType {
 	Note_A5_sharp = 61,
 	Note_B5_flat = 61,
 	Note_B5 = 62,
-	Note_C6 = 63,
+	Note_C6 = 63,		//c'''		<-- switches here
 	Note_C6_sharp = 64,
 	Note_D6_flat = 64,
 	Note_D6 = 65,
@@ -116,7 +115,7 @@ enum NoteType {
 	Note_A6_sharp = 73,
 	Note_B6_flat = 73,
 	Note_B6 = 74,
-	Note_C7 = 75,
+	Note_C7 = 75,		//c''''		<-- switches here
 	Note_C7_sharp = 76,
 	Note_D7_flat = 76,
 	Note_D7 = 77,
@@ -133,7 +132,7 @@ enum NoteType {
 	Note_A7_sharp = 85,
 	Note_B7_flat = 85,
 	Note_B7 = 86,
-	Note_C8 = 87,
+	Note_C8 = 87,		//c'''''		<-- switches here
 };
 
 class Note {
