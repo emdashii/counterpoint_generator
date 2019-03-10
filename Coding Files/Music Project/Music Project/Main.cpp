@@ -79,7 +79,6 @@
 #include "GenerateLowerVoice.h"
 #include "SpeciesOne.h"
 #include "WritePhrase.h"
-#include <string>
 // #include <vector>
 // #include "Note.h"
 // #include "WritePhrase.h"
@@ -90,8 +89,6 @@ using namespace std;
 
 //HACK TEMP DECLARATION
 void GenerateNoteEnum();
-void GenerateNoteConversionCases();
-string getSuffix(int keyLabelNumber);
 void tests();
 
 int main() {
@@ -156,79 +153,27 @@ void GenerateNoteConversionCases() {
 
 		// Print case for current note
 		//TODO NOT DONE WITH THIS
-		cout << "case Note_" << letter << keyLabelNumber << ":" << endl;
-		cout << "	return \"" << static_cast<char>(tolower(letter)) << getSuffix(keyLabelNumber) << "\" + to_string(note.getLength());" << endl;
-		cout << "	break;" << endl;
+		cout << "case: Note_" << letter << keyLabelNumber << " = " << keyNumber << "," << endl;
+		cout << "	return \"" << tolower(letter) << "'" << "\" + to_string(note.getLength);" << endl;
 
-		/*
-		 * case Note_A0:
-		 *		return "a,," + to_string(note.getLength());
-		 *		break;
-		 */
-
-		 // If necessary, print note assignment lines for sharps and flats
+		// If necessary, print note assignment lines for sharps and flats
 		if (letter != 'B' && letter != 'E' && keyNumber < 87) {
 			keyNumber++;
-			// Print case for current note's sharp
-			cout << "case Note_" << letter << keyLabelNumber << "_sharp:" << endl;
-			cout << "	return \"" << static_cast<char>(tolower(letter)) << "is" << getSuffix(keyLabelNumber) << "\" + to_string(note.getLength());" << endl;
-			cout << "	break;" << endl;
-
-			// Commented this out because it is unnecessary, as this note is the same as the one above and you can't have two options for the same thing in a switch statement
-			// // Print case for next note's flat
-			// char nextLetter = letter + 1;
-			// if (nextLetter == 'H') nextLetter = 'A';
-			// cout << "case Note_" << nextLetter << keyLabelNumber << "_flat:" << endl;
-			// cout << "	return \"" << static_cast<char>(tolower(letter)) << "es" << getSuffix(keyLabelNumber) << "\" + to_string(note.getLength());" << endl;
-			// cout << "	break;" << endl;
+			// Print note assignment line for current letter's sharp
+			cout << "Note_" << letter << keyLabelNumber << "_sharp" << " = " << keyNumber << "," << endl;
+			// Print note assignment line for next letter's flat
+			char nextLetter = letter + 1;
+			if (nextLetter == 'H') nextLetter = 'A';
+			cout << "Note_" << nextLetter << keyLabelNumber << "_flat" << " = " << keyNumber << "," << endl;
 		}
 
 		// Increment values
 		letter++;
 	}
-}
-
-string getSuffix(int keyLabelNumber) {
-	switch (keyLabelNumber) {
-	case 0:
-		return ",,,";
-		break;
-	case 1:
-		return ",,";
-		break;
-	case 2:
-		return ",";
-		break;
-	case 3:
-		return "";
-		break;
-	case 4:
-		return "'";
-		break;
-	case 5:
-		return "''";
-		break;
-	case 6:
-		return "'''";
-		break;
-	case 7:
-		return "''''";
-		break;
-	case 8:
-		return "'''''";
-		break;
-	default:
-		cout << "ERROR!" << endl;
-		return "-----ERROR----";
-	}
-}
 
 void tests() {
 
 	GenerateNoteEnum();
-	
-	GenerateNoteConversionCases();
-
 	GenerateLowerVoice lvTest1;
 	lvTest1.printLowerVoice();
 	GenerateLowerVoice lvTest2(14);

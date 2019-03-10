@@ -27,6 +27,11 @@ GenerateLowerVoice::GenerateLowerVoice(int length) {
 	lowerVoice.push_back(1);
 }
 
+
+GenerateLowerVoice::~GenerateLowerVoice()
+{
+}
+
 int GenerateLowerVoice::pickRandomInterval() {
 	switch (rand() % 20) {
 	case 0:
