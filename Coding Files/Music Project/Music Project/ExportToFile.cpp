@@ -438,6 +438,8 @@ string ExportToFile::convertNoteToOutput(Note note) {
 		return "c'''''" + to_string(note.getLength());
 		break;
 	default:
-		throw runtime_error("Error, could not convert note to proper output for lily pond!");
+		//TODO Fixme
+		string test = to_string(note.getNote());
+		throw runtime_error("Error, could not convert note to proper output for lily pond!" + " Test, Note int is: " + note.getNote() );
 	}
 }
