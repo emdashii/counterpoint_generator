@@ -1,0 +1,13 @@
+\header {
+title = "Blank Title"
+composer = "This is just a test"
+tagline = "Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program"
+}
+\paper {
+	system-system-spacing #'basic-distance = #16
+}
+global = { \key c \major \time 4/4 }
+
+
+% Phrase 1
+"topPhrase1" = { \clef "treble" \key c \major \time 4/4
