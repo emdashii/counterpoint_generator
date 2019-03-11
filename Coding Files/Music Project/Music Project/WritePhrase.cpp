@@ -2,6 +2,7 @@
 #include <cstdlib>          // for rand
 #include <iostream>
 #include "GenerateLowerVoice.h"
+#include <string>
 
 WritePhrase::WritePhrase(string key, int phraseLength) {
 	this->key = key;
@@ -86,6 +87,12 @@ void WritePhrase::calculateInterval() {
 		cout << i << "\t";
 	}
 	cout << endl;
+	string s = "";
+	for (auto i : intervals) {
+		s = to_string(i);
+		intervalStrings.push_back(s);
+		}
+	}
 }
 
 Note WritePhrase::convertIntToNote(int num) {

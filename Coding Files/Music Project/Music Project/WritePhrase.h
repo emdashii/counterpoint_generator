@@ -42,4 +42,5 @@ private:
 	vector<Note> lowerVoiceN;
 	vector<int> upperVoiceI;
 	vector<int> lowerVoiceI;
+	vector<string> intervalStrings;
 };
