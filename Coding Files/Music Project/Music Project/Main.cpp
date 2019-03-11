@@ -99,9 +99,9 @@ void tests2();
 
 int main() {
 
-	//WritePhrase::setSeed(12);
-	//tests2();			// testing out class WritePhrase
+	WritePhrase::setSeed(12);
 	try {
+	tests2();			// testing out class WritePhrase
 		//tests();
 		
 	}
@@ -284,7 +284,7 @@ void tests2() {
 	phrase1.printPhraseI();
 	phrase1.calculateInterval();
 	cout << endl;
-	phrase1.printPhraseN();
+	//phrase1.printPhraseN();
 	cout << endl;
 	
 	WritePhrase phrase2("D", 3);
@@ -293,5 +293,22 @@ void tests2() {
 	phrase2.printPhraseI();
 	phrase2.calculateInterval();
 	cout << endl;
-	phrase2.printPhraseN();
+	//phrase2.printPhraseN();
+
+	WritePhrase phrase3("Bb", 3);
+	phrase3.writeThePhrase();
+	phrase3.printPhraseI();
+	phrase3.calculateInterval();
+	cout << endl;
+	//phrase3.printPhraseN();
+	cout << endl;
+
+	Phrase phrase11(phrase1.getUpperVoice(), phrase1.getLowerVoice());
+	Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice());
+
+	ExportToFile exportTest("lilyPondOutput1.1", "Blank Title", "This is just a test");
+	exportTest.addPhrase(&phrase11);
+	exportTest.addPhrase(&phrase22);
+	// export
+	exportTest.WriteOutput();
 }

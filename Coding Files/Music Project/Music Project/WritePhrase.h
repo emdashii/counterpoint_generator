@@ -19,6 +19,8 @@ public:
 	int getTotalLength() const { return phraseLength * beatsPerMeasure; }
 	void setBeatsPerMeasure(int beatsPerMeasure) { this->beatsPerMeasure = beatsPerMeasure; }
 	void setSpeciesType(int speciesType) { this->speciesType = speciesType; }
+	vector<Note*> getLowerVoice() { return lowerVoiceN; }
+	vector<Note*> getUpperVoice() { return upperVoiceN; }
 
 	void writeThePhrase();
 	void printPhraseI();
@@ -26,7 +28,7 @@ public:
 	void calculateInterval(); // Also prints it
 
 	// These four go together
-	Note convertIntToNote(int num);
+	Note* convertIntToNote(int num);
 	int convertScaleDegreeToHalfStep(int halfStep);
 	Note convertKeyToNote();
 	void setKey(string key) { this->key = key; }
@@ -38,8 +40,8 @@ private:
 	int speciesType = 1;	// Will take a 1, 2, or 4. Need to add a way to use imitative... How about a 0?
 	void writeLowerVoice();
 	void writeUpperVoice();
-	vector<Note> upperVoiceN;
-	vector<Note> lowerVoiceN;
+	vector<Note*> upperVoiceN;
+	vector<Note*> lowerVoiceN;
 	vector<int> upperVoiceI;
 	vector<int> lowerVoiceI;
 	vector<string> intervalStrings;

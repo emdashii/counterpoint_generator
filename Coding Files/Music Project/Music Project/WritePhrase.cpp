@@ -68,11 +68,11 @@ void WritePhrase::printPhraseN() {
 	cout << "Phrase in Notes: " << endl;
 	cout << "Top   : ";
 	for (auto i : upperVoiceN) {
-		cout << i.getNote() << " ";
+		cout << i->getNote() << " ";
 	}
 	cout << endl << "Bottom: ";
 	for (auto i : lowerVoiceN) {
-		cout << i.getNote() << " ";
+		cout << i->getNote() << " ";
 	}
 	cout << endl;
 }
@@ -91,15 +91,14 @@ void WritePhrase::calculateInterval() {
 	for (auto i : intervals) {
 		s = to_string(i);
 		intervalStrings.push_back(s);
-		}
 	}
 }
 
-Note WritePhrase::convertIntToNote(int num) {
+Note* WritePhrase::convertIntToNote(int num) {
 	Note key = convertKeyToNote();
 	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote();
 	NoteType val = static_cast<NoteType>(computeNext);
-	return Note(val, 4);
+	return &Note(val, 4);
 }
 
 int WritePhrase::convertScaleDegreeToHalfStep(int scaleDegree) {
