@@ -95,11 +95,12 @@ void GenerateNoteEnum();
 void GenerateNoteConversionCases();
 string getSuffix(int keyLabelNumber);
 void tests();
+void tests2();
 
 int main() {
 
-	// WritePhrase::setSeed();
-
+	//WritePhrase::setSeed();
+	//tests2();
 	try {
 		//tests();
 		
@@ -257,7 +258,10 @@ void tests() {
 		// export
 		exportTest.WriteOutput();
 
+}
 
+void tests2() {
+	/*
 	GenerateLowerVoice lvTest1;
 	lvTest1.printLowerVoice();
 	GenerateLowerVoice lvTest2(14);
@@ -274,4 +278,10 @@ void tests() {
 		GenerateLowerVoice test(12);
 		test.printLowerVoice();
 	}
+	*/
+	WritePhrase phrase1("C", 8);
+	phrase1.writeThePhrase();
+	phrase1.printPhraseI();
+	cout << endl;
+	phrase1.printPhraseN();
 }

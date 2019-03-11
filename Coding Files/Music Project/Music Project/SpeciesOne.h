@@ -10,7 +10,6 @@ class SpeciesOne : public Species
 {
 public:
 	SpeciesOne();
-	//SpeciesOne(Note noteBefore, Note noteBelow, Note beforeAndBelow);
 	~SpeciesOne();
 	int chooseNextNote();
 
@@ -19,9 +18,10 @@ public:
 	vector<int> writeImitativeLowerVoice(int length); // Uses Up and Down
 	int pickImitativeUp();
 	int pickImitativeDown();
-	void printImitativeCounterpoint(vector<int> upper, vector<int> lower);
-	vector<int> getNoteOptions() { return noteOptions; }
-	
+	void printImitativeCounterpoint();
+	vector<int> getImitativeUpper() { return upper; }
+	vector<int> getImitativeLower() { return lower; }
+		
 protected:
 	vector<int> noteOptions;
 	// Now for the species rules.....
@@ -35,5 +35,9 @@ protected:
 	void m_noParallelOctaves();
 	void m_noSimilarOctaves();
 	void m_noSameNote();
+
+	// For imitative counterpoint
+	vector<int> lower;
+	vector<int> upper;
 };
 

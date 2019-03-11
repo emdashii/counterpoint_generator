@@ -22,7 +22,7 @@ int SpeciesOne::chooseNextNote() {
 	m_noParallelOctaves();
 	m_noSimilarOctaves();
 
-	int toChoose = (rand() % noteOptions.size()) + 1;
+	int toChoose = (rand() % noteOptions.size());
 	return noteOptions.at(toChoose);
 }
 
@@ -30,8 +30,7 @@ int SpeciesOne::chooseNextNote() {
 		// Functions for imitative first species counterpoint
 
 void SpeciesOne::writeImitativeTwoVoices(int length) {
-	vector<int> lower;
-	vector<int> upper;
+	
 	lower = writeImitativeLowerVoice(length);
 	for (int i = 0; i < length - 3; i++) {
 		int temp = lower.at(i);
@@ -39,8 +38,6 @@ void SpeciesOne::writeImitativeTwoVoices(int length) {
 	}
 	upper.push_back(7);
 	upper.push_back(8);
-
-	printImitativeCounterpoint(upper, lower); 
 }
 
 vector<int> SpeciesOne::writeImitativeLowerVoice(int length) {
@@ -110,7 +107,7 @@ int SpeciesOne::pickImitativeDown() { // Returns the same note, a second, or a f
 	}
 }
 
-void SpeciesOne::printImitativeCounterpoint(vector<int> upper, vector<int> lower) {
+void SpeciesOne::printImitativeCounterpoint() {
 	cout << "Top:" << "\t\t";
 	for (auto note : upper) {
 		cout << note << "\t";
@@ -147,7 +144,7 @@ void SpeciesOne::h_noFourthOrSeventh() {
 	// Find any 7ths
 	vector<int>::iterator itrr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 6);
 	if (itrr != noteOptions.end()) {
-		noteOptions.erase(itr);	// Remove them
+		noteOptions.erase(itrr);	// Remove them
 	}
 }
 

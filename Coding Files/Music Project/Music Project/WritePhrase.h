@@ -10,15 +10,21 @@ using namespace::std;
 
 class WritePhrase {
 public:
-	WritePhrase(int measureLength, int beatsPerMeasure, int speciesType);
+	WritePhrase(string key, int phraseLength);
 	~WritePhrase();
 	static void setSeed();
-	int getMeasureLength() { return measureLength; }
-	int getBeatsPerMeasure() { return beatsPerMeasure; }
-	int getSpeciesType() { return speciesType; }
-	int getTotalLength() { return measureLength * beatsPerMeasure; }
+	int getPhraseLength() const { return phraseLength; }
+	int getBeatsPerMeasure() const { return beatsPerMeasure; }
+	int getSpeciesType() const { return speciesType; }
+	int getTotalLength() const { return phraseLength * beatsPerMeasure; }
+	void setBeatsPerMeasure(int beatsPerMeasure) { this->beatsPerMeasure = beatsPerMeasure; }
+	void setSpeciesType(int speciesType) { this->speciesType = speciesType; }
 
-	// from Export to file - moved here
+	void writeThePhrase();
+	void printPhraseI();
+	void printPhraseN();
+
+	// These four go together
 	Note convertIntToNote(int num);
 	int convertScaleDegreeToHalfStep(int halfStep);
 	Note convertKeyToNote();
@@ -26,11 +32,13 @@ public:
 
 private:
 	string key;
-	int measureLength;
-	int beatsPerMeasure;
-	int speciesType;
+	int phraseLength;	// In measures (number of measures)
+	int beatsPerMeasure = 4;
+	int speciesType = 1;	// Will take a 1, 2, or 4. Need to add a way to use imitative... How about a 0?
 	void writeLowerVoice();
-	void writeUpperVoice(int speciesType);
-	vector<Note> upperVoice;
-	vector<Note> lowerVoice;
+	void writeUpperVoice();
+	vector<Note> upperVoiceN;
+	vector<Note> lowerVoiceN;
+	vector<int> upperVoiceI;
+	vector<int> lowerVoiceI;
 };

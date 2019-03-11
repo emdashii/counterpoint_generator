@@ -3,18 +3,16 @@
 #include <iostream>
 #include "GenerateLowerVoice.h"
 
-
-WritePhrase::WritePhrase(int measureLength, int beatsPerMeasure, int speciesType) {
-	//GenerateLowerVoice(measureLength) lower;
-	//vector<int> lowerVoice = lower.getLowerVoice;
-	//SpeciesOne upper;
+WritePhrase::WritePhrase(string key, int phraseLength) {
+	this->key = key;
+	this->phraseLength = phraseLength;
 }
 
 WritePhrase::~WritePhrase() {
 }
 
 void WritePhrase::setSeed() {
-	double seed;
+	int seed;
 	cout << "Enter seed for random numbers: ";
 	cin >> seed;
 	while (cin.fail()) {
@@ -27,6 +25,54 @@ void WritePhrase::setSeed() {
 	cout << "Seed set to " << seed << endl;
 }
 
+
+// THIS IS WHERE THE MAGIC HAPPENS (along with everywhere else)
+
+
+void WritePhrase::writeThePhrase() {
+	if (speciesType != 0) {
+		writeLowerVoice();
+		writeUpperVoice();
+	}
+	else {
+		SpeciesOne imitative;
+		imitative.writeImitativeTwoVoices(phraseLength * beatsPerMeasure);
+		lowerVoiceI = imitative.getImitativeLower();
+		upperVoiceI = imitative.getImitativeUpper();
+		upperVoiceI.emplace(upperVoiceI.begin(), 1);
+		for (int i = 0; i < lowerVoiceI.size(); i++) {
+			lowerVoiceN.push_back(convertIntToNote(lowerVoiceI.at(i)));
+			upperVoiceN.push_back(convertIntToNote(upperVoiceI.at(i)));
+		}
+	}
+}
+
+void WritePhrase::printPhraseI() {
+	cout << "Phrase in ints: " << endl;
+	cout << "Top   : ";
+	for (auto i : upperVoiceI) {
+		cout << i << " ";
+	}
+	cout << endl << "Bottom: ";
+	for (auto i : lowerVoiceI) {
+		cout << i << " ";
+	}
+	cout << endl;
+}
+
+void WritePhrase::printPhraseN() {
+	cout << "Phrase in Notes: " << endl;
+	cout << "Top   : ";
+	for (auto i : upperVoiceN) {
+		cout << i.getNote() << " ";
+	}
+	cout << endl << "Bottom: ";
+	for (auto i : lowerVoiceN) {
+		cout << i.getNote() << " ";
+	}
+	cout << endl;
+}
+
 Note WritePhrase::convertIntToNote(int num) {
 	Note key = convertKeyToNote();
 	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote();
@@ -36,7 +82,11 @@ Note WritePhrase::convertIntToNote(int num) {
 
 int WritePhrase::convertScaleDegreeToHalfStep(int scaleDegree) {
 	int halfStep;
-	switch (((scaleDegree - 1) % 7) + 1) {
+	int expression = ((scaleDegree - 1) % 7) + 1;
+	if (expression < 0) {
+		expression += 7;
+	}
+	switch (expression) {
 		case 0:
 			halfStep = 0;
 			break;
@@ -58,9 +108,13 @@ int WritePhrase::convertScaleDegreeToHalfStep(int scaleDegree) {
 		case 6:
 			halfStep = 11;
 			break;
+		case 7:
+			halfStep = 11;		// FIX THIS LATER
+			break;
 		default: // Because of modulo arithmetic, this should never happen
-			halfStep = 999;
-			throw runtime_error("Could not convert scale degree to half step!");
+			halfStep = 99;
+			cout << "Could not convert scale degree " << scaleDegree << " to half step! Expression: " << expression << endl;
+			//throw runtime_error("Could not convert scale degree to half step!");
 	}
 	return ((scaleDegree - 1) / 7) * 12 + halfStep;
 }
@@ -104,5 +158,37 @@ Note WritePhrase::convertKeyToNote() {
 	}
 	else {
 		throw runtime_error("Cannot convert key to note!");
+	}
+}
+
+void WritePhrase::writeLowerVoice() {
+	GenerateLowerVoice lower(phraseLength);
+	lowerVoiceI = lower.getLowerVoice();
+	for (auto i : lowerVoiceI) {
+		lowerVoiceN.push_back(convertIntToNote(i));
+	}
+}
+
+void WritePhrase::writeUpperVoice() {
+	if (rand() % 2 == 1) {
+		upperVoiceI.push_back(5);
+	}
+	else {
+		upperVoiceI.push_back(8);
+	}
+	for (int i = 1; i < lowerVoiceI.size() -2; i++) {
+		SpeciesOne one;
+		one.setNoteBefore(upperVoiceI.at(i - 1));
+		one.setNoteBelow(lowerVoiceI.at(i));
+		one.setNoteBeforeAndBelow(lowerVoiceI.at(i - 1));
+		if (i >= 2) {
+			one.setNoteTwoBefore(upperVoiceI.at(i - 2));
+		}
+		upperVoiceI.push_back(one.chooseNextNote());
+	}
+	upperVoiceI.push_back(7);
+	upperVoiceI.push_back(8);
+	for (auto i : upperVoiceI) {
+		upperVoiceN.push_back(convertIntToNote(i));
 	}
 }
