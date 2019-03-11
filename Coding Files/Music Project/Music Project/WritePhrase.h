@@ -12,7 +12,7 @@ class WritePhrase {
 public:
 	WritePhrase(string key, int phraseLength);
 	~WritePhrase();
-	static void setSeed();
+	static void setSeed(int seed);
 	int getPhraseLength() const { return phraseLength; }
 	int getBeatsPerMeasure() const { return beatsPerMeasure; }
 	int getSpeciesType() const { return speciesType; }

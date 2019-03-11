@@ -11,8 +11,10 @@ WritePhrase::WritePhrase(string key, int phraseLength) {
 WritePhrase::~WritePhrase() {
 }
 
-void WritePhrase::setSeed() {
-	int seed;
+void WritePhrase::setSeed(int seed) {
+	srand(seed);
+	// For manually entering the seed
+	/*int seed;
 	cout << "Enter seed for random numbers: ";
 	cin >> seed;
 	while (cin.fail()) {
@@ -23,6 +25,7 @@ void WritePhrase::setSeed() {
 	}
 	srand(seed);
 	cout << "Seed set to " << seed << endl;
+	*/
 }
 
 
@@ -51,11 +54,11 @@ void WritePhrase::printPhraseI() {
 	cout << "Phrase in ints: " << endl;
 	cout << "Top   : ";
 	for (auto i : upperVoiceI) {
-		cout << i << " ";
+		cout << i << "\t";
 	}
 	cout << endl << "Bottom: ";
 	for (auto i : lowerVoiceI) {
-		cout << i << " ";
+		cout << i << "\t";
 	}
 	cout << endl;
 }
@@ -82,34 +85,31 @@ Note WritePhrase::convertIntToNote(int num) {
 
 int WritePhrase::convertScaleDegreeToHalfStep(int scaleDegree) {
 	int halfStep;
-	int expression = ((scaleDegree - 1) % 7) + 1;
-	if (expression < 0) {
+	int expression = (((scaleDegree - 1) % 7) + 1);
+	if (expression <= 0) {
 		expression += 7;
-	}
+	}							  
 	switch (expression) {
-		case 0:
+		case 1:
 			halfStep = 0;
 			break;
-		case 1:
+		case 2:
 			halfStep = 2;
 			break;
-		case 2:
+		case 3:
 			halfStep = 4;
 			break;
-		case 3:
+		case 4:
 			halfStep = 5;
 			break;
-		case 4:
+		case 5:
 			halfStep = 7;
 			break;
-		case 5:
+		case 6:
 			halfStep = 9;
 			break;
-		case 6:
-			halfStep = 11;
-			break;
 		case 7:
-			halfStep = 11;		// FIX THIS LATER
+			halfStep = 11;
 			break;
 		default: // Because of modulo arithmetic, this should never happen
 			halfStep = 99;
@@ -162,7 +162,7 @@ Note WritePhrase::convertKeyToNote() {
 }
 
 void WritePhrase::writeLowerVoice() {
-	GenerateLowerVoice lower(phraseLength);
+	GenerateLowerVoice lower(phraseLength * beatsPerMeasure);
 	lowerVoiceI = lower.getLowerVoice();
 	for (auto i : lowerVoiceI) {
 		lowerVoiceN.push_back(convertIntToNote(i));

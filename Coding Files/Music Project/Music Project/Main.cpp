@@ -99,8 +99,8 @@ void tests2();
 
 int main() {
 
-	//WritePhrase::setSeed();
-	//tests2();
+	//WritePhrase::setSeed(12);
+	//tests2();			// testing out class WritePhrase
 	try {
 		//tests();
 		
@@ -279,9 +279,17 @@ void tests2() {
 		test.printLowerVoice();
 	}
 	*/
-	WritePhrase phrase1("C", 8);
+	WritePhrase phrase1("C", 4);
 	phrase1.writeThePhrase();
 	phrase1.printPhraseI();
 	cout << endl;
 	phrase1.printPhraseN();
+	cout << endl;
+	
+	WritePhrase phrase2("D", 8);
+	phrase2.setSpeciesType(0);
+	phrase2.writeThePhrase();
+	phrase2.printPhraseI();
+	cout << endl;
+	phrase2.printPhraseN();
 }
