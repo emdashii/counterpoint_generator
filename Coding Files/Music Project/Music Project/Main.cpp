@@ -279,17 +279,19 @@ void tests2() {
 		test.printLowerVoice();
 	}
 	*/
-	WritePhrase phrase1("C", 4);
+	WritePhrase phrase1("C", 3);
 	phrase1.writeThePhrase();
 	phrase1.printPhraseI();
+	phrase1.calculateInterval();
 	cout << endl;
 	phrase1.printPhraseN();
 	cout << endl;
 	
-	WritePhrase phrase2("D", 8);
+	WritePhrase phrase2("D", 3);
 	phrase2.setSpeciesType(0);
 	phrase2.writeThePhrase();
 	phrase2.printPhraseI();
+	phrase2.calculateInterval();
 	cout << endl;
 	phrase2.printPhraseN();
 }

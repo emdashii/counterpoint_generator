@@ -76,6 +76,18 @@ void WritePhrase::printPhraseN() {
 	cout << endl;
 }
 
+void WritePhrase::calculateInterval() {
+	vector<int> intervals;
+	for (int i = 0; i < lowerVoiceI.size(); i++) {
+		intervals.push_back(upperVoiceI.at(i) - lowerVoiceI.at(i) + 1);
+	}
+	cout << "dist  : ";
+	for (auto i : intervals) {
+		cout << i << "\t";
+	}
+	cout << endl;
+}
+
 Note WritePhrase::convertIntToNote(int num) {
 	Note key = convertKeyToNote();
 	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote();

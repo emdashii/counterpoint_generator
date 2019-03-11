@@ -120,7 +120,7 @@ void SpeciesOne::printImitativeCounterpoint() {
 }
 
 void SpeciesOne::h_cannotCrossMelody() {
-	for (int i = noteBelow; i < 15; i++) {
+	for (int i = noteBelow; i < 10; i++) {
 		noteOptions.push_back(i);
 	}
 }

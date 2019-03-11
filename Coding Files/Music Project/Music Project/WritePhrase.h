@@ -23,6 +23,7 @@ public:
 	void writeThePhrase();
 	void printPhraseI();
 	void printPhraseN();
+	void calculateInterval(); // Also prints it
 
 	// These four go together
 	Note convertIntToNote(int num);
