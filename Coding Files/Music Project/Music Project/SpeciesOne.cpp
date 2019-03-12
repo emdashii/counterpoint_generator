@@ -14,16 +14,40 @@ SpeciesOne::~SpeciesOne()
 int SpeciesOne::chooseNextNote() {
 	noteOptions.clear();
 	h_cannotCrossMelody(); // fills in a range above and equal to note below
+	
+	//For debugging
+	cout << "NoteOptions initialized:";
+	for (auto o : noteOptions) {
+		cout << o << " ";
+	}
+	cout << endl;
+	
+	// Removes bad notes
 	h_avoidDimFifth();
 	h_noFourthOrSeventh();
+	h_noSecondOrNinth();
 
 	m_noParallelFifths();
 	m_noSimilarFifths();
 	m_noParallelOctaves();
 	m_noSimilarOctaves();
+	//m_onlyUse1Once(); // It is not working... so changed something else to get a similar effect. Code there now for reference for me later
+
+	// For debugging
+	cout << "NoteOptions emptied:    ";
+	for (auto o : noteOptions) {
+		cout << o << " ";
+	}
+	cout << endl;
+	if (previousIntervals.size() != 0) {
+		cout << "PreviousInterval: " << previousIntervals.at(previousIntervals.size() - 1) << endl;
+	}
 
 	int toChoose = (rand() % noteOptions.size());
-	return noteOptions.at(toChoose);
+	int chosen = noteOptions.at(toChoose);
+	
+	//cout << "toChoose: " << toChoose << " NoteBelow: " << noteBelow << " nextNote: " << noteOptions.at(toChoose);
+	return chosen;
 }
 
 
@@ -120,7 +144,7 @@ void SpeciesOne::printImitativeCounterpoint() {
 }
 
 void SpeciesOne::h_cannotCrossMelody() {
-	for (int i = noteBelow; i < 10; i++) {
+	for (int i = noteBelow+1; i < noteBelow+9; i++) {
 		noteOptions.push_back(i);
 	}
 }
@@ -143,6 +167,19 @@ void SpeciesOne::h_noFourthOrSeventh() {
 	}
 	// Find any 7ths
 	vector<int>::iterator itrr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 6);
+	if (itrr != noteOptions.end()) {
+		noteOptions.erase(itrr);	// Remove them
+	}
+}
+
+void SpeciesOne::h_noSecondOrNinth() {
+	// Find any 2nds
+	vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 1);
+	if (itr != noteOptions.end()) {
+		noteOptions.erase(itr);	// Remove them
+	}
+	// Find any 9ths
+	vector<int>::iterator itrr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 8);
 	if (itrr != noteOptions.end()) {
 		noteOptions.erase(itrr);	// Remove them
 	}
@@ -206,6 +243,15 @@ void SpeciesOne::m_noSameNote() {
 	vector<int>::iterator itr = find(noteOptions.begin(), noteOptions.end(), noteBefore);
 	if (itr != noteOptions.end()) {
 		noteOptions.erase(itr);
+	}
+}
+
+void SpeciesOne::m_onlyUse1Once() {
+	previousIntervals.push_back(noteBefore - noteBeforeAndBelow + 1 );
+
+	vector<int>::iterator itr = find(previousIntervals.begin(), previousIntervals.end(), 1);
+	if (itr != previousIntervals.end()) {
+		noteOptions.erase(noteOptions.begin());
 	}
 }
 

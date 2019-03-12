@@ -67,11 +67,16 @@ void WritePhrase::printPhraseI() {
 void WritePhrase::printPhraseN() {
 	cout << "Phrase in Notes: " << endl;
 	cout << "Top   : ";
-	for (auto i : upperVoiceN) {
-		cout << i->getNote() << " ";
+	//	vector<Note*> upperVoiceN;
+	//	NoteType getNote() { return note; }
+	cout << Note_C4 << " | ";
+	for (Note* i : upperVoiceN) {
+		NoteType type = i->getNote();
+		cout << type << " ";
+		//cout << i->getNote() << " ";
 	}
 	cout << endl << "Bottom: ";
-	for (auto i : lowerVoiceN) {
+	for (Note* i : lowerVoiceN) {
 		cout << i->getNote() << " ";
 	}
 	cout << endl;
@@ -98,7 +103,8 @@ Note* WritePhrase::convertIntToNote(int num) {
 	Note key = convertKeyToNote();
 	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote();
 	NoteType val = static_cast<NoteType>(computeNext);
-	return &Note(val, 4);
+	Note* test = new Note(val, 4);
+	return test;
 }
 
 int WritePhrase::convertScaleDegreeToHalfStep(int scaleDegree) {
@@ -202,7 +208,8 @@ void WritePhrase::writeUpperVoice() {
 		if (i >= 2) {
 			one.setNoteTwoBefore(upperVoiceI.at(i - 2));
 		}
-		upperVoiceI.push_back(one.chooseNextNote());
+		int nextNote = one.chooseNextNote();
+		upperVoiceI.push_back(nextNote);
 	}
 	upperVoiceI.push_back(7);
 	upperVoiceI.push_back(8);
