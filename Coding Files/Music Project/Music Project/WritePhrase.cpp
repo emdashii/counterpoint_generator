@@ -32,7 +32,6 @@ void WritePhrase::setSeed(int seed) {
 
 // THIS IS WHERE THE MAGIC HAPPENS (along with everywhere else)
 
-
 void WritePhrase::writeThePhrase() {
 	if (speciesType != 0) {
 		writeLowerVoice();

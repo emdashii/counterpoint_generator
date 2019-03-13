@@ -59,7 +59,7 @@ void ExportToFile::WriteOutput() {
 		<< "	system-system-spacing #'basic-distance = #16" << endl
 		<< "}" << endl
 		// Leaving this line hard coded here for now, we may want to change this later
-		<< "global = { \\key c \\major \\time 4/4 }" << endl << endl << endl;
+		<< "global = { \\key " << key << " \\major \\time " << time << " }" << endl << endl << endl;
 
 	// Loop through phrases to be printed
 	int numPhrases = 0;
@@ -111,7 +111,7 @@ void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& output
 	// write comment with phrase info
 	outputFileStream << "% Phrase " << phraseNumber << endl;
 	// Leaving this hardcoded for now as well, may want to change later
-	outputFileStream << topPhraseName << " = { \\clef \"treble\" \\key c \\major \\time 4/4" << endl;
+	outputFileStream << topPhraseName << " = { \\clef \"treble\" \\key " << key << " \\major \\time " << time << endl;
 	// Time to print out the notes for the top voice of this phrase
 	for (auto note : phrase.getUpperVoice()) {
 		outputFileStream << " " << convertNoteToOutput(*note);
@@ -120,7 +120,7 @@ void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& output
 	outputFileStream << "\\bar \"||\" }" << endl;
 
 	// Leaving this hardcoded for now as well, may want to change later
-	outputFileStream << bottomPhraseName << " = { \\clef \"treble\" \\key c \\major \\time 4/4" << endl;
+	outputFileStream << bottomPhraseName << " = { \\clef \"treble\" \\key " << key << " \\major \\time " << time << endl;
 	// Time to print out the notes for the bottom voice of this phrase
 	for (auto note : phrase.getLowerVoice()) {
 		outputFileStream << " " << convertNoteToOutput(*note);
@@ -438,6 +438,8 @@ string ExportToFile::convertNoteToOutput(Note note) {
 		return "c'''''" + to_string(note.getLength());
 		break;
 	default:
+		//TODO Fixme
+		cout << to_string(note.getNote()) << endl;
 		throw runtime_error("Error, could not convert note to proper output for lily pond!");
 	}
 }
