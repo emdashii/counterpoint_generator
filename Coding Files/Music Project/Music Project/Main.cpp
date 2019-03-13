@@ -307,7 +307,7 @@ void tests2() {
 	Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice());
 	Phrase phrase33(phrase3.getUpperVoice(), phrase3.getLowerVoice());
 
-	ExportToFile exportTest("lilyPondOutput1.4", "SpeciesOne working? part 2", "E");
+	ExportToFile exportTest("lilyPondOutput1.6", "SpeciesOne working? part 4", "E");
 	exportTest.addPhrase(&phrase11);
 	exportTest.addPhrase(&phrase22);
 	exportTest.addPhrase(&phrase33);

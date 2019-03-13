@@ -101,10 +101,59 @@ void WritePhrase::calculateInterval() {
 
 Note* WritePhrase::convertIntToNote(int num) {
 	Note key = convertKeyToNote();
-	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote();
+	int octave = 0;
+	if (num < 1) {
+		octave = -12;
+	}
+	else if (num > 8) {
+		octave = 12;
+	}
+	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote() + octave;
 	NoteType val = static_cast<NoteType>(computeNext);
 	Note* test = new Note(val, 4);
 	return test;
+}
+
+string WritePhrase::getKey() {
+	if (key == "C") {
+		return "c";
+	}
+	else if (key == "Db") {
+		return "des";
+	}
+	else if (key == "D") {
+		return "d";
+	}
+	else if (key == "Eb") {
+		return "ees";
+	}
+	else if (key == "E") {
+		return "e";
+	}
+	else if (key == "F") {
+		return "f";
+	}
+	else if (key == "F#") {
+		return "fis";
+	}
+	else if (key == "G") {
+		return "g";
+	}
+	else if (key == "Ab") {
+		return "aes";
+	}
+	else if (key == "A") {
+		return "a";
+	}
+	else if (key == "Bb") {
+		return "bes";
+	}
+	else if (key == "B") {
+		return "b";
+	}
+	else {
+		throw runtime_error("Cannot convert key to send to LilyPond!");
+	}
 }
 
 int WritePhrase::convertScaleDegreeToHalfStep(int scaleDegree) {
@@ -140,7 +189,7 @@ int WritePhrase::convertScaleDegreeToHalfStep(int scaleDegree) {
 			cout << "Could not convert scale degree " << scaleDegree << " to half step! Expression: " << expression << endl;
 			//throw runtime_error("Could not convert scale degree to half step!");
 	}
-	return ((scaleDegree - 1) / 7) * 12 + halfStep;
+	return halfStep;
 }
 
 Note WritePhrase::convertKeyToNote() {
@@ -169,10 +218,10 @@ Note WritePhrase::convertKeyToNote() {
 		return Note(Note_G4);
 	}
 	else if (key == "Ab") {
-		return Note(Note_A3_flat);
+		return Note(Note_A4_flat);
 	}
 	else if (key == "A") {
-		return Note(Note_A3);
+		return Note(Note_A4);
 	}
 	else if (key == "Bb") {
 		return Note(Note_B3_flat);
