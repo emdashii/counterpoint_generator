@@ -5,7 +5,7 @@
 #include "Note.h"
 
 
-ExportToFile::ExportToFile(string fileName, string musicTitle, string composer, string key) : title(musicTitle), composer(composer) {
+ExportToFile::ExportToFile(string fileName, string musicTitle, string composer, string key, string timeSignature) : title(musicTitle), composer(composer) {
 	//TODO verify key before assignment
 	this->key = key;
 
