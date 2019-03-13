@@ -24,17 +24,20 @@ public:
 		
 protected:
 	vector<int> noteOptions;
+	vector<int> previousIntervals;
 	// Now for the species rules.....
 	// h = harmonic, m = melodic
 	void h_cannotCrossMelody();
 	void h_avoidDimFifth();
 	void h_noFourthOrSeventh();
+	void h_noSecondOrNinth();
 
 	void m_noParallelFifths();
 	void m_noSimilarFifths();
 	void m_noParallelOctaves();
 	void m_noSimilarOctaves();
 	void m_noSameNote();
+	void m_onlyUse1Once();
 
 	// For imitative counterpoint
 	vector<int> lower;

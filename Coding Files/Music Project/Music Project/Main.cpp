@@ -284,7 +284,7 @@ void tests2() {
 	phrase1.printPhraseI();
 	phrase1.calculateInterval();
 	cout << endl;
-	//phrase1.printPhraseN();
+	phrase1.printPhraseN();
 	cout << endl;
 	
 	WritePhrase phrase2("D", 3);
@@ -293,7 +293,7 @@ void tests2() {
 	phrase2.printPhraseI();
 	phrase2.calculateInterval();
 	cout << endl;
-	//phrase2.printPhraseN();
+	phrase2.printPhraseN();
 
 	WritePhrase phrase3("Bb", 3);
 	phrase3.writeThePhrase();
@@ -305,10 +305,12 @@ void tests2() {
 
 	Phrase phrase11(phrase1.getUpperVoice(), phrase1.getLowerVoice());
 	Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice());
+	Phrase phrase33(phrase3.getUpperVoice(), phrase3.getLowerVoice());
 
-	ExportToFile exportTest("lilyPondOutput1.1", "Blank Title", "This is just a test");
+	ExportToFile exportTest("lilyPondOutput1.4", "SpeciesOne working? part 2", "E");
 	exportTest.addPhrase(&phrase11);
 	exportTest.addPhrase(&phrase22);
+	exportTest.addPhrase(&phrase33);
 	// export
 	exportTest.WriteOutput();
 }
