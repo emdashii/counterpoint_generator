@@ -439,7 +439,7 @@ string ExportToFile::convertNoteToOutput(Note note) {
 		break;
 	default:
 		//TODO Fixme
-		string test = to_string(note.getNote());
-		throw runtime_error("Error, could not convert note to proper output for lily pond!" + " Test, Note int is: " + note.getNote() );
+		cout << to_string(note.getNote()) << endl;
+		throw runtime_error("Error, could not convert note to proper output for lily pond!");
 	}
 }
