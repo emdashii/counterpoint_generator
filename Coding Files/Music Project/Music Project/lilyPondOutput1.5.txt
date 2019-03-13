@@ -1,5 +1,5 @@
 \header {
-title = "SpeciesOne working? part 2"
+title = "SpeciesOne working? part 3"
 composer = "E"
 tagline = "Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program"
 }

@@ -307,10 +307,33 @@ void tests2() {
 	Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice());
 	Phrase phrase33(phrase3.getUpperVoice(), phrase3.getLowerVoice());
 
-	ExportToFile exportTest("lilyPondOutput1.4", "SpeciesOne working? part 2", "E");
+	ExportToFile exportTest("lilyPondOutput1.6", "SpeciesOne working? part 4", "E");
 	exportTest.addPhrase(&phrase11);
 	exportTest.addPhrase(&phrase22);
 	exportTest.addPhrase(&phrase33);
 	// export
 	exportTest.WriteOutput();
 }
+
+/* NEW MAIN POTENTIALLY
+ * 
+	WritePhrase::setSeed(12);
+	try {
+	int numberOfPhrases = 1;
+	cout << "Welcome to Caleb and Elliott's counterpoint generator! \n\nHow many phrases would you like to write today? << endl;
+	cin >> numberOfPhrases;
+	// Then validate input
+	for (int i = 0; i < numberOfPhrases; i++) {
+		string key;
+		cout << "For Phrase " << i+1 <<", enter the key: (Good input: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B) << endl;
+		cin >> key;
+	tests2();			// testing out class WritePhrase
+		//tests();
+		
+	}
+	catch (runtime_error &exception) {
+		cout << exception.what() << endl;
+	}
+
+	return 0;
+ */

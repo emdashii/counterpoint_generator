@@ -22,6 +22,8 @@ public:
 	vector<Note*> getLowerVoice() { return lowerVoiceN; }
 	vector<Note*> getUpperVoice() { return upperVoiceN; }
 
+	string getKey();
+
 	void writeThePhrase();
 	void printPhraseI();
 	void printPhraseN();
