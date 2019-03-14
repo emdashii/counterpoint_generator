@@ -5,7 +5,9 @@
 #include "Note.h"
 
 
-ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) : title(musicTitle), composer(composer) {
+ExportToFile::ExportToFile(string fileName, string musicTitle, string composer, string key, string timeSignature) : title(musicTitle), composer(composer) {
+	//TODO verify key before assignment
+	this->key = key;
 
 	//TODO may want to change this ending to proper lily pond file extension, but leaving like this for now for testing purposes
 	// Put ending of .txt on the end of the filename if it doesn't have that ending already
@@ -27,23 +29,11 @@ ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) 
 	// }
 	// inputFileStream.close();
 
+
 	this->fileName = fileName;
 }
 
 void ExportToFile::addPhrase(Phrase* phrase) {
-
-	// If the key for this object hasn't been assigned yet, assign it to this phrase's key
-	if (key == "") key = phrase->getKey();
-
-	// Else verify this phrase's key is the same as the other phrases' keys in this class
-	else if (phrase->getKey() != key) throw runtime_error("Error, cannot export phrases of different keys!");
-
-	// If the time for this object hasn't been assigned yet, assign it to this phrase's time signature
-	if (time == "") time = phrase->getTimeSig();
-
-	// Else verify this phrase's time signature is the same as the other phrases' time signature in this class
-	else if (phrase->getTimeSig() != time) throw runtime_error("Error, cannot export phrases with different time signatures!");
-
 	phrases.push_back(phrase);
 }
 
