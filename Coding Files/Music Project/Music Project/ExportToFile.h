@@ -11,7 +11,7 @@ using namespace std;
 class ExportToFile {
 public:
 	// Constructor with desired output file info
-	ExportToFile(string fileName, string musicTitle, string composer, string key = "c", string timeSignature = "4/4");
+	ExportToFile(string fileName, string musicTitle, string composer);
 
 	// Add phrase function
 	void addPhrase(Phrase* phrase);
@@ -24,8 +24,8 @@ private:
 	string fileName;
 	string title;
 	string composer;
-	string key;
-	string time;
+	string key = "";
+	string time = "";
 	int numVoices;
 	// Vector with phrases to be exported
 	vector<Phrase*> phrases;
