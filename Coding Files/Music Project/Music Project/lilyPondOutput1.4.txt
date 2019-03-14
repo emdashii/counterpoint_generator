@@ -11,19 +11,19 @@ global = { \key c \major \time 4/4 }
 
 % Phrase 1
 "topPhrase1" = { \clef "treble" \key c \major \time 4/4
- g'4 a4 a'4 g'4 g'4 g4 e'4 c'4 f4 a4 b'4 c'4\bar "||" }
+ g'4 a'4 a'4 g'4 g'4 g'4 e'4 c'4 f'4 a'4 b'4 c''4\bar "||" }
 "bottomPhrase1" = { \clef "treble" \key c \major \time 4/4
- c'4 f4 c'4 e'4 b4 e4 g4 c4 d4 f4 d'4 c'4}
+ c'4 f'4 c'4 e'4 b'4 e'4 g'4 c4 d'4 f'4 d'4 c'4}
 % Phrase 2
 "topPhrase2" = { \clef "treble" \key c \major \time 4/4
- d'4 a'4 cis''4 e''4 b''4 fis''4 a'4 e'4 b4 fis'4 cis''4 d'4\bar "||" }
+ d'4 a'4 cis''4 e''4 b''4 fis''4 a'4 e'4 b'4 fis'4 cis''4 d''4\bar "||" }
 "bottomPhrase2" = { \clef "treble" \key c \major \time 4/4
- d'4 fis'4 a'4 e''4 b'4 d'4 a4 e4 b4 fis4 e'4 d'4}
+ d'4 fis'4 a'4 e''4 b'4 d'4 a'4 e'4 b'4 fis'4 e'4 d'4}
 % Phrase 3
 "topPhrase3" = { \clef "treble" \key c \major \time 4/4
- f'4 dis4 g4 c4 g4 dis'4 ais4 ais4 ais4 dis4 a'4 ais4\bar "||" }
+ f'4 dis'4 g'4 c'4 g'4 dis'4 ais4 ais4 ais4 dis'4 a'4 ais'4\bar "||" }
 "bottomPhrase3" = { \clef "treble" \key c \major \time 4/4
- ais4 c4 dis4 a4 ais,4 g4 d4 dis4 g4 c4 c'4 ais4}
+ ais4 c'4 dis'4 a4 ais,4 g'4 d'4 dis'4 g'4 c'4 c'4 ais4}
 \score {
 	<<
 		<<
