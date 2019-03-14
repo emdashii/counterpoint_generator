@@ -33,11 +33,8 @@ void WritePhrase::setSeed(int seed) {
 // THIS IS WHERE THE MAGIC HAPPENS (along with everywhere else)
 
 void WritePhrase::writeThePhrase() {
-	if (speciesType != 0) {
-		writeLowerVoice();
-		writeUpperVoice();
-	}
-	else {
+	switch (speciesType) {
+	case 0:
 		SpeciesOne imitative;
 		imitative.writeImitativeTwoVoices(phraseLength * beatsPerMeasure);
 		lowerVoiceI = imitative.getImitativeLower();
@@ -47,6 +44,16 @@ void WritePhrase::writeThePhrase() {
 			lowerVoiceN.push_back(convertIntToNote(lowerVoiceI.at(i)));
 			upperVoiceN.push_back(convertIntToNote(upperVoiceI.at(i)));
 		}
+		break;
+	case 1:
+		writeLowerVoice();
+		writeUpperVoiceOne();
+		break;
+	case 2:
+		writeLowerVoice();
+		writeUpperVoiceTwo();
+	default:
+		break;
 	}
 }
 
@@ -192,7 +199,7 @@ void WritePhrase::writeLowerVoice() {
 	}
 }
 
-void WritePhrase::writeUpperVoice() {
+void WritePhrase::writeUpperVoiceOne() {
 	if (rand() % 2 == 1) {
 		upperVoiceI.push_back(5);
 	}
@@ -215,4 +222,7 @@ void WritePhrase::writeUpperVoice() {
 	for (auto i : upperVoiceI) {
 		upperVoiceN.push_back(convertIntToNote(i));
 	}
+}
+
+void WritePhrase::writeUpperVoiceTwo() {
 }

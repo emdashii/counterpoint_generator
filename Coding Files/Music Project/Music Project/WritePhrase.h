@@ -38,7 +38,8 @@ private:
 	int beatsPerMeasure = 4;
 	int speciesType = 1;		// Will take a 1, 2, or 0. 0 is for imitative counterpoint, which is stored in SpeciesOne
 	void writeLowerVoice();
-	void writeUpperVoice();
+	void writeUpperVoiceOne();
+	void writeUpperVoiceTwo();
 	vector<Note*> upperVoiceN;
 	vector<Note*> lowerVoiceN;
 	vector<int> upperVoiceI;

@@ -93,20 +93,16 @@ int SpeciesOne::pickImitativeUp() { // Returns the same note, a third, or a fift
 	switch (rand() % 9) {
 	case 0:
 		return 1;
-		break;
 	case 1:
 	case 2:
 	case 3:
 	case 4:
 		return 3;
-		break;
 	case 5:
 	case 6:
 		return 5;
-		break;
 	default:
 		return 3;
-		break;
 	}
 }
 
@@ -114,20 +110,16 @@ int SpeciesOne::pickImitativeDown() { // Returns the same note, a second, or a f
 	switch (rand() % 7) {
 	case 0:
 		return 1;
-		break;
 	case 1:
 	case 2:
 	case 3:
 	case 4:
 		return 2;
-		break;
 	case 5:
 	case 6:
 		return 4;
-		break;
 	default:
 		return 2;
-		break;
 	}
 }
 

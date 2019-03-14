@@ -9,10 +9,10 @@ GenerateLowerVoice::GenerateLowerVoice(int length) {
 
 	for (int i = 0; i < length - 3; i++) {
 		int nextNote;
-		if (lowerVoice.back() < -4) {
+		if (lowerVoice.back() < -1) {
 			nextNote = lowerVoice.back() + pickRandomInterval() -1;
 		}
-		else if (lowerVoice.back() > 5) {
+		else if (lowerVoice.back() > 4) {
 			nextNote = lowerVoice.back() - pickRandomInterval() -1;
 		}
 		else if (rand() % 2 == 0) {
