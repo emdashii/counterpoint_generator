@@ -1,7 +1,6 @@
 #pragma once
 #include "Note.h"
 #include "SpeciesTwo.h"
-#include "SpeciesFour.h"
 #include "SpeciesOne.h"
 #include <vector>
 using namespace::std;
@@ -35,9 +34,9 @@ public:
 
 private:
 	string key;
-	int phraseLength;	// In measures (number of measures)
+	int phraseLength;			// In measures (number of measures)
 	int beatsPerMeasure = 4;
-	int speciesType = 1;	// Will take a 1, 2, or 4. Need to add a way to use imitative... How about a 0?
+	int speciesType = 1;		// Will take a 1, 2, or 0. 0 is for imitative counterpoint, which is stored in SpeciesOne
 	void writeLowerVoice();
 	void writeUpperVoice();
 	vector<Note*> upperVoiceN;
