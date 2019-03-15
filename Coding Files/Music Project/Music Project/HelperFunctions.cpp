@@ -7,7 +7,7 @@ void getInput(const string& prompt, int& variable) {
 	bool error = false;
 	do {
 		error = false;
-		cout << prompt << endl;
+		cout << prompt;
 		if (!(cin >> variable)) {
 			error = true;
 			cout << "Invalid input! Please try again." << endl;
@@ -21,13 +21,13 @@ void getInput(const string& prompt, string& variable) {
 	bool error = false;
 	do {
 		error = false;
-		cout << prompt << endl;
-		if (!(cin >> variable)) {
+		cout << prompt;
+		getline(cin, variable);
+		if (!cin) {
 			error = true;
 			cout << "Invalid input! Please try again." << endl;
 			cin.clear();
 		}
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	} while (error);
 }
 
@@ -233,18 +233,17 @@ void tests2() {
 	cout << endl;
 	phrase4.printPhraseN();
 
-	Phrase phrase11(phrase1.getUpperVoice(), phrase1.getLowerVoice(), phrase1.getKey(), phrase1.getTimeSignature());
-	Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice(), phrase2.getKey(), phrase2.getTimeSignature());
-	Phrase phrase33(phrase3.getUpperVoice(), phrase3.getLowerVoice(), phrase3.getKey(), phrase3.getTimeSignature());
-	Phrase phrase44(phrase4.getUpperVoice(), phrase4.getLowerVoice(), phrase4.getKey(), phrase4.getTimeSignature());
-	Phrase phrase55(phrase5.getUpperVoice(), phrase5.getLowerVoice(), phrase5.getKey(), phrase5.getTimeSignature());
-
+	Phrase phrase11(phrase1.getPhrase()->getUpperVoice(), phrase1.getPhrase()->getLowerVoice(), phrase1.getKey(), phrase1.getTimeSignature());
+	Phrase phrase22(phrase2.getPhrase()->getUpperVoice(), phrase2.getPhrase()->getLowerVoice(), phrase2.getKey(), phrase2.getTimeSignature());
+	Phrase phrase33(phrase3.getPhrase()->getUpperVoice(), phrase3.getPhrase()->getLowerVoice(), phrase3.getKey(), phrase3.getTimeSignature());
+	Phrase phrase44(phrase4.getPhrase()->getUpperVoice(), phrase4.getPhrase()->getLowerVoice(), phrase4.getKey(), phrase4.getTimeSignature());
+	Phrase phrase55(phrase5.getPhrase()->getUpperVoice(), phrase5.getPhrase()->getLowerVoice(), phrase5.getKey(), phrase5.getTimeSignature());
+	
 	ExportToFile exportTest("lilyPondOutput1.9", "SpeciesTwo test part 1", "TheProgram (duh)");
 	exportTest.addPhrase(&phrase11);
 	exportTest.addPhrase(&phrase22);
 	exportTest.addPhrase(&phrase33);
 	exportTest.addPhrase(&phrase44);
 	//exportTest.addPhrase(&phrase55);
-	// export
 	exportTest.WriteOutput();
 }

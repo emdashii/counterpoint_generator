@@ -17,9 +17,6 @@ WritePhrase::WritePhrase(string key, int phraseLength, int speciesType) {
 	this->speciesType = speciesType;
 }
 
-WritePhrase::~WritePhrase() {
-}
-
 void WritePhrase::setSeed(int seed) {
 	srand(seed);
 	// For manually entering the seed
@@ -47,8 +44,8 @@ void WritePhrase::writeThePhrase() {
 		upperVoiceI = imitative.getImitativeUpper();
 		upperVoiceI.emplace(upperVoiceI.begin(), 1);
 		for (int i = 0; i < lowerVoiceI.size(); i++) {
-			lowerVoiceN.push_back(convertIntToNote(lowerVoiceI.at(i)));
-			upperVoiceN.push_back(convertIntToNote(upperVoiceI.at(i)));
+			phraseN.addNoteToLowerVoice(convertIntToNote(lowerVoiceI.at(i)));
+			phraseN.addNoteToUpperVoice(convertIntToNote(upperVoiceI.at(i)));
 		}
 	}
 	else if (speciesType == 2) {
@@ -80,13 +77,13 @@ void WritePhrase::printPhraseN() {
 	//	vector<Note*> upperVoiceN;
 	//	NoteType getNote() { return note; }
 	cout << Note_C4 << " | ";
-	for (Note* i : upperVoiceN) {
+	for (Note* i : phraseN.getUpperVoice()) {
 		NoteType type = i->getNote();
 		cout << type << " ";
 		//cout << i->getNote() << " ";
 	}
 	cout << endl << "Bottom: ";
-	for (Note* i : lowerVoiceN) {
+	for (Note* i : phraseN.getLowerVoice()) {
 		cout << i->getNote() << " ";
 	}
 	cout << endl;
@@ -266,7 +263,7 @@ void WritePhrase::writeLowerVoice() {
 	GenerateLowerVoice lower(phraseLength * beatsPerMeasure);
 	lowerVoiceI = lower.getLowerVoice();
 	for (auto i : lowerVoiceI) {
-		lowerVoiceN.push_back(convertIntToNote(i));
+		phraseN.addNoteToLowerVoice(convertIntToNote(i));
 	}
 }
 
@@ -291,7 +288,7 @@ void WritePhrase::writeUpperVoiceOne() {
 	upperVoiceI.push_back(7);
 	upperVoiceI.push_back(8);
 	for (auto i : upperVoiceI) {
-		upperVoiceN.push_back(convertIntToNote(i));
+		phraseN.addNoteToUpperVoice(convertIntToNote(i));
 	}
 }
 
@@ -342,6 +339,6 @@ void WritePhrase::writeLowerVoiceTwo() {
 	GenerateLowerVoice lower(phraseLength * beatsPerMeasure / 2);
 	lowerVoiceI = lower.getLowerVoice();
 	for (auto i : lowerVoiceI) {
-		lowerVoiceN.push_back(convertIntToNoteTwo(i));
+		phraseN.addNoteToLowerVoice(convertIntToNoteTwo(i));
 	}	
 }

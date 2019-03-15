@@ -6,7 +6,16 @@
 
 
 ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) : title(musicTitle), composer(composer) {
+	// Verify and set filename
+	setFileName(fileName);
+}
 
+void ExportToFile::addPhrase(Phrase* phrase) {
+	// Add phrase
+	phrases.push_back(phrase);
+}
+
+void ExportToFile::setFileName(string fileName) {
 	// Verify that the file has the proper ending
 	verifyEnding(fileName);
 
@@ -15,7 +24,7 @@ ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) 
 		cout << "Warning a file already exists with the chosen output filename: " << fileName << "!" << endl
 			<< "Please enter a different filename: " << endl;
 		string newFileName;
-		getline(cin,newFileName);
+		getline(cin, newFileName);
 		// If blank, reassign current name
 		if (newFileName.empty()) newFileName = fileName;
 		// Verify that the file has the proper ending
@@ -25,14 +34,6 @@ ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) 
 	}
 
 	this->fileName = fileName;
-}
-
-void ExportToFile::addPhrase(Phrase* phrase) {
-	// Assign stuff
-	key = phrase->getKey();
-	time = phrase->getTimeSig();
-	// Add prhase
-	phrases.push_back(phrase);
 }
 
 void ExportToFile::WriteOutput() {
@@ -55,8 +56,8 @@ void ExportToFile::WriteOutput() {
 		<< "}" << endl
 		<< "\\paper {" << endl
 		<< "	system-system-spacing #'basic-distance = #16" << endl
-		<< "}" << endl
-		<< "global = { \\key " << key << " \\major \\time " << time << " }" << endl << endl << endl;
+		<< "}" << endl << endl << endl;
+		//<< "global = { \\key " << key << " \\major \\time " << time << " }" << endl << endl << endl;
 
 	// Loop through phrases to be printed
 	int numPhrases = 0;
@@ -69,8 +70,8 @@ void ExportToFile::WriteOutput() {
 	outputFileStream << "\\score {" << endl
 		<< "	<<" << endl
 		<< "		<<" << endl
-		<< "			\\new Voice = \"one\" {" << endl
-		<< "				\\global" << endl;
+		<< "			\\new Voice = \"one\" {" << endl;
+		//<< "				\\global" << endl;
 	// Write the phrase names to be printed
 	for (int i = 1; i <= numPhrases; i++) {
 		outputFileStream << "				\\\"topPhrase" << i << "\"" << endl;
@@ -79,8 +80,8 @@ void ExportToFile::WriteOutput() {
 
 	// Write lower voice info
 	outputFileStream << "			>>" << endl
-		<< "			\\new Voice = \"one\" {" << endl
-		<< "				\\global" << endl;
+		<< "			\\new Voice = \"one\" {" << endl;
+		//<< "				\\global" << endl;
 	// Write the phrase names to be printed
 	for (int i = 1; i <= numPhrases; i++) {
 		outputFileStream << "				\\\"bottomPhrase" << i << "\"" << endl;

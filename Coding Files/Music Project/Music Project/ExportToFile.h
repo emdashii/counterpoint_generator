@@ -11,9 +11,14 @@ class ExportToFile {
 public:
 	// Constructor with desired output file info
 	ExportToFile(string fileName, string musicTitle, string composer);
+	// Default Constructor
+	ExportToFile() = default;
 
-	// Add phrase function
+	// Mutators
 	void addPhrase(Phrase* phrase);
+	void setFileName(string fileName);
+	void setComposer(string composer) { this->composer = composer; }
+	void setTitle(string title) { this->title = title; }
 
 	// Final output function, writes all phrases and everything
 	void WriteOutput();
@@ -23,8 +28,6 @@ private:
 	string fileName;
 	string title;
 	string composer;
-	string key = "";
-	string time = "";
 	// Vector with phrases to be exported
 	vector<Phrase*> phrases;
 

@@ -108,22 +108,31 @@ int main() {
 	string authorInfoDesired;
 	string titleDesired;
 
-	ExportToFile export();
+	ExportToFile myFileExport;
+	WritePhrase phrase;
 
 	getInput("Enter the number of phrases you want: ", numPhrasesDesired);
 	for (int i = 0; i < numPhrasesDesired; i++) {
 		cout << "Choose specifics for phrase " << to_string(i + 1) << ":" << endl;
 		getInput("	Enter the key you want phrase " + to_string(i+1) + " to be in: ", keyDesired);
-		getInput("	Which species type would you like phrase " + to_string(i + 1) + " to be (1 or 2): ", speciesTypeDesired);
+		getInput("	Which species type would you like phrase " + to_string(i + 1) + " to be (0, 1 or 2): ", speciesTypeDesired);
 		getInput("	Enter how many measures you want phrase " + to_string(i + 1) + " to consist of: ", lengthDesired);
 		getInput("	Enter the time signature you want for phrase " + to_string(i + 1) + ". (Ie. 4/4): ", timeSignatureDesired);
-		WritePhrase phrase(keyDesired, lengthDesired, speciesTypeDesired);
+
+		phrase.setKey(keyDesired);
+		phrase.setSpeciesType(speciesTypeDesired);
+		phrase.setLength(lengthDesired);
 		phrase.writeThePhrase();
-		export.addPhrase(phrase.getPhrase());
+		myFileExport.addPhrase(phrase.getPhrase());
 	}
 	getInput("Enter your desired output filename: ", fileNameDesired);
 	getInput("Enter the composer of this piece: ", authorInfoDesired);
 	getInput("Enter the title for this piece: ", titleDesired);
+
+	myFileExport.setFileName(fileNameDesired);
+	myFileExport.setComposer(authorInfoDesired);
+	myFileExport.setTitle(titleDesired);
+	myFileExport.WriteOutput();
 
 	return 0;
 }

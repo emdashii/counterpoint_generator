@@ -12,17 +12,19 @@ public:
 	WritePhrase(string key, int phraseLength);
 	// Overloaded constructor
 	WritePhrase(string key, int phraseLength, int speciesType);
-	~WritePhrase();
+	// Default constructor
+	WritePhrase() = default;
+
 	static void setSeed(int seed);
 	int getPhraseLength() const { return phraseLength; }
 	int getBeatsPerMeasure() const { return beatsPerMeasure; }
 	int getSpeciesType() const { return speciesType; }
 	int getTotalLength() const { return phraseLength * beatsPerMeasure; }
+
+	void setLength(int length) { phraseLength = length; }
 	void setBeatsPerMeasure(int beatsPerMeasure) { this->beatsPerMeasure = beatsPerMeasure; }
 	void setSpeciesType(int speciesType) { this->speciesType = speciesType; }
-	Phrase getPhrase() { return phraseN; }
-	//vector<Note*> getLowerVoice() { return lowerVoiceN; }
-	//vector<Note*> getUpperVoice() { return upperVoiceN; }
+	Phrase* getPhrase() { return &phraseN; }
 
 	void writeThePhrase();
 	void printPhraseI();
@@ -50,9 +52,6 @@ private:
 	void writeLowerVoiceTwo();
 
 	Phrase phraseN;
-	//vector<Note*> upperVoiceN;
-	//vector<Note*> lowerVoiceN;
-
 	vector<int> upperVoiceI;
 	vector<int> lowerVoiceI;
 	
