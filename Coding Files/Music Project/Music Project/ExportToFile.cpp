@@ -32,11 +32,12 @@ ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) 
 
 void ExportToFile::addPhrase(Phrase* phrase) {
 
+	// Changed how this part works in the output section to get a specific time signature and key for each phrases
 	// If the key for this object hasn't been assigned yet, assign it to this phrase's key
-	if (key == "") key = phrase->getKey();
+	key = phrase->getKey();
 
 	// Else verify this phrase's key is the same as the other phrases' keys in this class
-	else if (phrase->getKey() != key) throw runtime_error("Error, cannot export phrases of different keys!");
+	if (phrase->getKey() != key) throw runtime_error("Error, cannot export phrases of different keys!");
 
 	// If the time for this object hasn't been assigned yet, assign it to this phrase's time signature
 	if (time == "") time = phrase->getTimeSig();
@@ -120,8 +121,8 @@ void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& output
 
 	// write comment with phrase info
 	outputFileStream << "% Phrase " << phraseNumber << endl;
-	// Leaving this hardcoded for now as well, may want to change later
-	outputFileStream << topPhraseName << " = { \\clef \"treble\" \\key " << key << " \\major \\time " << time << endl;
+	// Leaving this hardcoded for now as well, may want to change later |||||| Changed so that each phrase could hold its own key
+	outputFileStream << topPhraseName << " = { \\clef \"treble\" \\key " << phrase.getKey() << " \\major \\time " << phrase.getTimeSig() << endl;
 	// Time to print out the notes for the top voice of this phrase
 	for (auto note : phrase.getUpperVoice()) {
 		outputFileStream << " " << convertNoteToOutput(*note);
@@ -130,7 +131,7 @@ void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& output
 	outputFileStream << "\\bar \"||\" }" << endl;
 
 	// Leaving this hardcoded for now as well, may want to change later
-	outputFileStream << bottomPhraseName << " = { \\clef \"treble\" \\key " << key << " \\major \\time " << time << endl;
+	outputFileStream << bottomPhraseName << " = { \\clef \"treble\" \\key " << phrase.getKey() << " \\major \\time " << phrase.getTimeSig() << endl;
 	// Time to print out the notes for the bottom voice of this phrase
 	for (auto note : phrase.getLowerVoice()) {
 		outputFileStream << " " << convertNoteToOutput(*note);

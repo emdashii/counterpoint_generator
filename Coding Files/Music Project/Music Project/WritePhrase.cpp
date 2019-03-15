@@ -32,9 +32,9 @@ void WritePhrase::setSeed(int seed) {
 
 // THIS IS WHERE THE MAGIC HAPPENS (along with everywhere else)
 
+
 void WritePhrase::writeThePhrase() {
-	switch (speciesType) {
-	case 0:
+	if (speciesType == 0) {
 		SpeciesOne imitative;
 		imitative.writeImitativeTwoVoices(phraseLength * beatsPerMeasure);
 		lowerVoiceI = imitative.getImitativeLower();
@@ -44,16 +44,14 @@ void WritePhrase::writeThePhrase() {
 			lowerVoiceN.push_back(convertIntToNote(lowerVoiceI.at(i)));
 			upperVoiceN.push_back(convertIntToNote(upperVoiceI.at(i)));
 		}
-		break;
-	case 1:
+	}
+	else if (speciesType == 2) {
+		writeLowerVoiceTwo();
+		writeUpperVoiceTwo();
+	}
+	else {
 		writeLowerVoice();
 		writeUpperVoiceOne();
-		break;
-	case 2:
-		writeLowerVoice();
-		writeUpperVoiceTwo();
-	default:
-		break;
 	}
 }
 
@@ -105,11 +103,78 @@ void WritePhrase::calculateInterval() {
 	}
 }
 
+string WritePhrase::getKey() {
+	if (key == "C") {
+		return "c";
+	}
+	else if (key == "Db") {
+		return "des";
+	}
+	else if (key == "D") {
+		return "d";
+	}
+	else if (key == "Eb") {
+		return "ees";
+	}
+	else if (key == "E") {
+		return "e";
+	}
+	else if (key == "F") {
+		return "f";
+	}
+	else if (key == "F#") {
+		return "fis";
+	}
+	else if (key == "G") {
+		return "g";
+	}
+	else if (key == "Ab") {
+		return "aes";
+	}
+	else if (key == "A") {
+		return "a";
+	}
+	else if (key == "Bb") {
+		return "bes";
+	}
+	else if (key == "B") {
+		return "b";
+	}
+	else {
+		throw runtime_error("Cannot convert key to LilyPond");
+	}
+}
+
+string WritePhrase::getTimeSignature() {
+	switch (beatsPerMeasure) {
+	case 2:
+		return "2/4";
+	case 3:
+		return "3/4";
+	case 4:
+		return "4/4";
+	case 6:
+		return "6/8";
+	case 9:
+		return "9/12";
+	default:
+		return "4/4";
+	}
+}
+
 Note* WritePhrase::convertIntToNote(int num) {
 	Note key = convertKeyToNote();
 	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote();
 	NoteType val = static_cast<NoteType>(computeNext);
 	Note* test = new Note(val, 4);
+	return test;
+}
+
+Note* WritePhrase::convertIntToNoteTwo(int num) {
+	Note key = convertKeyToNote();
+	int computeNext = convertScaleDegreeToHalfStep(num) + key.getNote();
+	NoteType val = static_cast<NoteType>(computeNext);
+	Note* test = new Note(val, 2);
 	return test;
 }
 
@@ -225,4 +290,37 @@ void WritePhrase::writeUpperVoiceOne() {
 }
 
 void WritePhrase::writeUpperVoiceTwo() {
+	if (rand() % 2 == 1) {
+		upperVoiceI.push_back(5);
+	}
+	else {
+		upperVoiceI.push_back(8);
+	}
+	for (int i = 1; i < lowerVoiceI.size() - 1; i++) {
+		SpeciesOne one;
+		one.setNoteBefore(upperVoiceI.at(i - 1));
+		one.setNoteBelow(lowerVoiceI.at(i));
+		one.setNoteBeforeAndBelow(lowerVoiceI.at(i - 1));
+		if (i >= 2) {
+			one.setNoteTwoBefore(upperVoiceI.at(i - 2));
+		}
+		int nextNote = one.chooseNextNote();
+		upperVoiceI.push_back(nextNote);
+	}
+	upperVoiceI.push_back(7);
+	upperVoiceI.push_back(8);
+
+
+	for (int i = 0; i < upperVoiceI.size()-1; i++) {
+		upperVoiceN.push_back(convertIntToNote(i));
+	}
+	upperVoiceN.push_back(convertIntToNoteTwo(upperVoiceI.size()-1));
+}
+
+void WritePhrase::writeLowerVoiceTwo() {
+	GenerateLowerVoice lower(phraseLength * beatsPerMeasure / 2);
+	lowerVoiceI = lower.getLowerVoice();
+	for (auto i : lowerVoiceI) {
+		lowerVoiceN.push_back(convertIntToNoteTwo(i));
+	}
 }

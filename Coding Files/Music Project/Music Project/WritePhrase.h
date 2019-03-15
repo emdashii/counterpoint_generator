@@ -21,13 +21,18 @@ public:
 	vector<Note*> getLowerVoice() { return lowerVoiceN; }
 	vector<Note*> getUpperVoice() { return upperVoiceN; }
 
+
 	void writeThePhrase();
 	void printPhraseI();
 	void printPhraseN();
-	void calculateInterval(); // Also prints it
+	void calculateInterval(); // Also prints it, only works for SpeciesOne or imitative
+	
+	string getKey();
+	string getTimeSignature();
 
 	// These four go together
 	Note* convertIntToNote(int num);
+	Note* convertIntToNoteTwo(int num);		// Only difference is it returns half notes instead of quarter notes
 	int convertScaleDegreeToHalfStep(int halfStep);
 	Note convertKeyToNote();
 	void setKey(string key) { this->key = key; }
@@ -40,6 +45,7 @@ private:
 	void writeLowerVoice();
 	void writeUpperVoiceOne();
 	void writeUpperVoiceTwo();
+	void writeLowerVoiceTwo();
 	vector<Note*> upperVoiceN;
 	vector<Note*> lowerVoiceN;
 	vector<int> upperVoiceI;
