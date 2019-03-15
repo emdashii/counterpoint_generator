@@ -36,6 +36,13 @@ void WritePhrase::setSeed(int seed) {
 
 // THIS IS WHERE THE MAGIC HAPPENS (along with everywhere else)
 
+Phrase WritePhrase::getPhrase() {
+	// Set key and time signature for phrase before returning it
+	phraseN.setKey(getKey());
+	phraseN.setTimeSignature(getTimeSignature());
+	return phraseN;
+}
+
 void WritePhrase::writeThePhrase() {
 	if (speciesType == 0) {
 		SpeciesOne imitative;

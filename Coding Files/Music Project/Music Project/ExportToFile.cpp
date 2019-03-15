@@ -10,7 +10,7 @@ ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) 
 	setFileName(fileName);
 }
 
-void ExportToFile::addPhrase(Phrase* phrase) {
+void ExportToFile::addPhrase(Phrase phrase) {
 	// Add phrase
 	phrases.push_back(phrase);
 }
@@ -63,7 +63,7 @@ void ExportToFile::WriteOutput() {
 	int numPhrases = 0;
 	for (auto phrase : phrases) {
 		// Write the current phrase -- Writes the upper and lower voice
-		writePhrase(*phrase, ++numPhrases, outputFileStream);
+		writePhrase(phrase, ++numPhrases, outputFileStream);
 	} // End of loop for printing phrases
 
 	// Output final info for file
