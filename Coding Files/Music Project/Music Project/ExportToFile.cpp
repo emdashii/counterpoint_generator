@@ -16,8 +16,6 @@ ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) 
 			<< "Please enter a different filename: " << endl;
 		string newFileName;
 		getline(cin,newFileName);
-		// Clear left over '\n'etc.
-		cin.ignore(1000, '\n');
 		// If blank, reassign current name
 		if (newFileName.empty()) newFileName = fileName;
 		// Verify that the file has the proper ending

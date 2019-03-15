@@ -311,7 +311,7 @@ void WritePhrase::writeUpperVoiceTwo() {
 	for (int i = 1; i < upperVoiceI.size(); i++) {
 		SpeciesTwo two;
 		two.setNoteBefore(upperVoiceI.at(i));
-		two.setNoteBelow(lowerVoiceI.at(i));
+		two.setNoteBelow(lowerVoiceI.at(i)); // TODO Note This line errors!
 		two.setNoteBeforeAndBelow(lowerVoiceI.at(i));
 		if (i >= 2) {
 			two.setNoteTwoBefore(upperVoiceI.at(i - 1));

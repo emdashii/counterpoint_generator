@@ -102,5 +102,17 @@ int main() {
 		cout << exception.what() << endl;
 	}
 
+	// get:
+	int numPhrasesDesired;
+	string keyDesired;
+	int lengthDesired;
+	int speciesTypeDesired;
+	int timeSignatureDesired;
+
+	string fileNameDesired;
+	string authorInfoDesired;
+	string titleDesired;
+
+
 	return 0;
 }
