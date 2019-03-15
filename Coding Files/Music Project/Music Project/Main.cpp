@@ -103,13 +103,12 @@ int main() {
 	string keyDesired;
 	int lengthDesired;	
 	int speciesTypeDesired;
-	string timeSignatureDesired; // only 2/4, 3/4, or 4/4
+	int beatsPerMeasureDesired; //only 2, 3, or 4 notes --> // only 2/4, 3/4, or 4/4
 	string fileNameDesired;
 	string authorInfoDesired;
 	string titleDesired;
 
 	ExportToFile myFileExport;
-	WritePhrase phrase;
 
 	getInput("Enter the number of phrases you want: ", numPhrasesDesired);
 	for (int i = 0; i < numPhrasesDesired; i++) {
@@ -118,11 +117,13 @@ int main() {
 		getInput("	Enter the key you want phrase " + to_string(i+1) + " to be in: ", keyDesired);
 		getInput("	Which species type would you like phrase " + to_string(i + 1) + " to be (0, 1 or 2): ", speciesTypeDesired);
 		getInput("	Enter how many measures you want phrase " + to_string(i + 1) + " to consist of: ", lengthDesired);
-		getInput("	Enter the time signature you want for phrase " + to_string(i + 1) + ". (Ie. 4/4): ", timeSignatureDesired);
-
+		getInput("	Enter how many notes you want per measure for phrase " + to_string(i + 1) + ": ", beatsPerMeasureDesired);
+		
+		WritePhrase phrase;
 		phrase.setKey(keyDesired);
 		phrase.setSpeciesType(speciesTypeDesired);
 		phrase.setLength(lengthDesired);
+		phrase.setBeatsPerMeasure(beatsPerMeasureDesired);
 		phrase.writeThePhrase();
 		myFileExport.addPhrase(phrase.getPhrase());
 	}

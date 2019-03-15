@@ -15,7 +15,7 @@ public:
 	ExportToFile() = default;
 
 	// Mutators
-	void addPhrase(Phrase* phrase);
+	void addPhrase(Phrase phrase);
 	void setFileName(string fileName);
 	void setComposer(string composer) { this->composer = composer; }
 	void setTitle(string title) { this->title = title; }
@@ -29,7 +29,7 @@ private:
 	string title;
 	string composer;
 	// Vector with phrases to be exported
-	vector<Phrase*> phrases;
+	vector<Phrase> phrases;
 
 	// Other helper functions
 	string convertNoteToOutput(Note note) const;

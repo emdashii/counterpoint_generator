@@ -24,7 +24,7 @@ public:
 	void setLength(int length) { phraseLength = length; }
 	void setBeatsPerMeasure(int beatsPerMeasure) { this->beatsPerMeasure = beatsPerMeasure; }
 	void setSpeciesType(int speciesType) { this->speciesType = speciesType; }
-	Phrase* getPhrase() { return &phraseN; }
+	Phrase getPhrase();
 
 	void writeThePhrase();
 	void printPhraseI();
