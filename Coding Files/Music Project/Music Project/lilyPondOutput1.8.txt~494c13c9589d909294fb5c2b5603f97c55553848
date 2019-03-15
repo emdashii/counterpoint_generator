@@ -11,9 +11,9 @@ global = { \key c \major \time 4/4 }
 
 % Phrase 1
 "topPhrase1" = { \clef "treble" \key c \major \time 4/4
- b'4 c'4 d'4 e'4 f'4 g'4 a'4 b'4 c''4 d''2\bar "||" }
+ b'4 c'4 d'4 e'4 f'4 g'4 a'4 b'4 c''4 d''4 e''4 f''4 g''4 a''4 b''4 c'''2\bar "||" }
 "bottomPhrase1" = { \clef "treble" \key c \major \time 4/4
- c'2 f'2 c'2 d'2 d'2 c'2}
+ c'2 f'2 c'2 d'2 e'2 e'2 d'2 c'2}
 \score {
 	<<
 		<<

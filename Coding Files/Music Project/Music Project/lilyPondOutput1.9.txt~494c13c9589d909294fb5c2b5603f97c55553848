@@ -1,5 +1,5 @@
 \header {
-title = "SpeciesTwo test part 1"
+title = "SpeciesTwo test part 4"
 composer = "TheProgarm (duh)"
 tagline = "Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program"
 }
@@ -10,21 +10,28 @@ global = { \key c \major \time 4/4 }
 
 
 % Phrase 1
-"topPhrase1" = { \clef "treble" \key c \major \time 4/4
+"topPhrase1" = { \clef "treble" \key d \major \time 4/4
+ cis''4 d'4 e'4 fis'4 g'4 a'4 b'4 cis''4 d''4 e''4 fis''4 g''4 a''4 b''2\bar "||" }
+"bottomPhrase1" = { \clef "treble" \key d \major \time 4/4
+ d'2 g'2 d'2 e'2 fis'2 fis'2 e'2 d'2}
+% Phrase 2
+"topPhrase2" = { \clef "treble" \key c \major \time 4/4
  b'4 c'4 d'4 e'4 f'4 g'4 a'4 b'4 c''4 d''2\bar "||" }
-"bottomPhrase1" = { \clef "treble" \key c \major \time 4/4
- c'2 f'2 c'2 d'2 d'2 c'2}
+"bottomPhrase2" = { \clef "treble" \key c \major \time 4/4
+ c'2 c'2 d'2 f'2 d'2 c'2}
 \score {
 	<<
 		<<
 			\new Voice = "one" {
 				\global
 				\"topPhrase1"
+				\"topPhrase2"
 			}
 			>>
 			\new Voice = "one" {
 				\global
 				\"bottomPhrase1"
+				\"bottomPhrase2"
 			}
 	>>
 		\layout{}
