@@ -27,9 +27,6 @@
     <ClCompile Include="SpeciesTwo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpeciesFour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ExportToFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SpeciesTwo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpeciesFour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ExportToFile.h">

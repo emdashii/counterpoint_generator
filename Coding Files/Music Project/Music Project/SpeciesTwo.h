@@ -9,7 +9,8 @@ class SpeciesTwo :
 public:
 	SpeciesTwo();
 	~SpeciesTwo();
-	/*Note chooseNextNote();
+	int chooseNextNote();
+	/*
 	bool melodicRule2a();
 	bool melodicRule2b();
 	bool harmonicRule2a();

@@ -278,6 +278,7 @@ void tests2() {
 		test.printLowerVoice();
 	}
 	*/
+	/*
 	WritePhrase phrase1("C", 3);
 	phrase1.writeThePhrase();
 	phrase1.printPhraseI();
@@ -301,35 +302,36 @@ void tests2() {
 	cout << endl;
 	phrase3.printPhraseN();
 	cout << endl;
-
-	WritePhrase phrase4("F", 4);
-	phrase4.setSpeciesType(0);
+	*/
+	WritePhrase phrase4("D", 4);
+	phrase4.setSpeciesType(2);
 	phrase4.writeThePhrase();
 	phrase4.printPhraseI();
 	phrase4.calculateInterval();
 	cout << endl;
 	phrase4.printPhraseN();
+	
 
-	WritePhrase phrase5("C", 4);
-	phrase4.setSpeciesType(2);
-	phrase4.writeThePhrase();
-	phrase4.printPhraseI();
+	WritePhrase phrase5("C", 3);
+	phrase5.setSpeciesType(2);
+	phrase5.writeThePhrase();
+	phrase5.printPhraseI();
 	cout << endl;
-	phrase4.printPhraseN();
+	phrase5.printPhraseN();
 
-	Phrase phrase11(phrase1.getUpperVoice(), phrase1.getLowerVoice(), phrase1.getKey(), phrase1.getTimeSignature());
-	Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice(), phrase2.getKey(), phrase2.getTimeSignature());
-	Phrase phrase33(phrase3.getUpperVoice(), phrase3.getLowerVoice(), phrase3.getKey(), phrase3.getTimeSignature());
+	//Phrase phrase11(phrase1.getUpperVoice(), phrase1.getLowerVoice(), phrase1.getKey(), phrase1.getTimeSignature());
+	//Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice(), phrase2.getKey(), phrase2.getTimeSignature());
+	//Phrase phrase33(phrase3.getUpperVoice(), phrase3.getLowerVoice(), phrase3.getKey(), phrase3.getTimeSignature());
 	Phrase phrase44(phrase4.getUpperVoice(), phrase4.getLowerVoice(), phrase4.getKey(), phrase4.getTimeSignature());
 	Phrase phrase55(phrase5.getUpperVoice(), phrase5.getLowerVoice(), phrase5.getKey(), phrase5.getTimeSignature());
 
 
-	ExportToFile exportTest("lilyPondOutput1.7", "SpeciesTwo test part 1", "TheProgarm (duh)");
-	exportTest.addPhrase(&phrase11);
-	exportTest.addPhrase(&phrase22);
-	exportTest.addPhrase(&phrase33);
+	ExportToFile exportTest("lilyPondOutput1.9", "SpeciesTwo test part 4", "TheProgarm (duh)");
+	//exportTest.addPhrase(&phrase11);
+	//exportTest.addPhrase(&phrase22);
+	//exportTest.addPhrase(&phrase33);
 	exportTest.addPhrase(&phrase44);
-	//exportTest.addPhrase(&phrase55);
+	exportTest.addPhrase(&phrase55);
 	// export
 	exportTest.WriteOutput();
 }
