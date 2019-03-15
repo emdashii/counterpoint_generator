@@ -1,7 +1,7 @@
 #pragma once
 #include "Note.h"
 #include <vector>
-using namespace::std;
+using namespace std;
 
 class GenerateLowerVoice {
 public:

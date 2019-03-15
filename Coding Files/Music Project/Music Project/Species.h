@@ -1,6 +1,6 @@
 #pragma once
 #include "Note.h"
-using namespace::std;
+using namespace std;
 
 class Species
 {

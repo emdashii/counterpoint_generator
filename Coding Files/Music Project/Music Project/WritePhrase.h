@@ -1,15 +1,17 @@
 #pragma once
 #include "Note.h"
-#include "SpeciesTwo.h"
-#include "SpeciesOne.h"
+#include "Phrase.h"
 #include <vector>
 using namespace std;
 
 // TODO: Complete this class
+// TODO Make this class use the Phrase class
 
 class WritePhrase {
 public:
 	WritePhrase(string key, int phraseLength);
+	// Overloaded constructor
+	WritePhrase(string key, int phraseLength, int speciesType);
 	~WritePhrase();
 	static void setSeed(int seed);
 	int getPhraseLength() const { return phraseLength; }
@@ -20,7 +22,6 @@ public:
 	void setSpeciesType(int speciesType) { this->speciesType = speciesType; }
 	vector<Note*> getLowerVoice() { return lowerVoiceN; }
 	vector<Note*> getUpperVoice() { return upperVoiceN; }
-
 
 	void writeThePhrase();
 	void printPhraseI();

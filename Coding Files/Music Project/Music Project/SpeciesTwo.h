@@ -3,9 +3,7 @@
 using namespace::std;
 
 // TODO: Finish after SpeciesOne -- Elliott
-class SpeciesTwo :
-	public Species
-{
+class SpeciesTwo : public Species {
 public:
 	SpeciesTwo();
 	~SpeciesTwo();

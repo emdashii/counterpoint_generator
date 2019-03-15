@@ -96,7 +96,6 @@ int main() {
 	try {
 		//tests1();	// Tests ExportToFile
 		//tests2();	// Tests WritePhrase
-			
 	}
 	catch (runtime_error &exception) {
 		cout << exception.what() << endl;
@@ -105,17 +104,26 @@ int main() {
 	// get inputs
 	int numPhrasesDesired;
 	string keyDesired;
-	int lengthDesired;
+	int lengthDesired;	
 	int speciesTypeDesired;
-	int timeSignatureDesired;
-
+	string timeSignatureDesired; // only 2/4, 3/4, or 4/4
 	string fileNameDesired;
 	string authorInfoDesired;
 	string titleDesired;
 
 	getInput("Enter the number of phrases you want: ", numPhrasesDesired);
-	getInput("Enter the key you want: ", keyDesired);
-
+	for (int i = 0; i < numPhrasesDesired; i++) {
+		cout << "Choose specifics for phrase " << to_string(i + 1) << ":" << endl;
+		getInput("	Enter the key you want phrase " + to_string(i+1) + " to be in: ", keyDesired);
+		getInput("	Which species type would you like phrase " + to_string(i + 1) + " to be (1 or 2): ", speciesTypeDesired);
+		getInput("	Enter how many measures you want phrase " + to_string(i + 1) + " to consist of: ", lengthDesired);
+		getInput("	Enter the time signature you want for phrase " + to_string(i + 1) + ". (Ie. 4/4): ", timeSignatureDesired);
+		WritePhrase phrase(keyDesired, lengthDesired, speciesTypeDesired);
+		Phrase phraseTEMP(phrase.getUpperVoice(), phrase.getLowerVoice(), keyDesired, timeSignatureDesired);
+	}
+	getInput("Enter your desired output filename: ", fileNameDesired);
+	getInput("Enter the composer of this piece: ", authorInfoDesired);
+	getInput("Enter the title for this piece: ", titleDesired);
 
 	return 0;
 }

@@ -2,12 +2,11 @@
 #include "Note.h"
 #include "Species.h"
 #include <vector>
-using namespace::std;
+using namespace std;
 
 // TODO: Complete this class -- Elliott
 
-class SpeciesOne : public Species
-{
+class SpeciesOne : public Species {
 public:
 	SpeciesOne();
 	~SpeciesOne();

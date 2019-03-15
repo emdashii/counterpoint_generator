@@ -22,8 +22,7 @@ void getInput(const string& prompt, string& variable) {
 	do {
 		error = false;
 		cout << prompt << endl;
-		//TODO Fix this
-		if (!(cin >> variable) /*|| stoi(variable) == ------*/ ) {
+		if (!(cin >> variable)) {
 			error = true;
 			cout << "Invalid input! Please try again." << endl;
 			cin.clear();

@@ -1,4 +1,6 @@
 #include "WritePhrase.h"
+#include "SpeciesTwo.h"
+#include "SpeciesOne.h"
 #include <cstdlib>          // for rand
 #include <iostream>
 #include "GenerateLowerVoice.h"
@@ -7,6 +9,12 @@
 WritePhrase::WritePhrase(string key, int phraseLength) {
 	this->key = key;
 	this->phraseLength = phraseLength;
+}
+
+WritePhrase::WritePhrase(string key, int phraseLength, int speciesType) {
+	this->key = key;
+	this->phraseLength = phraseLength;
+	this->speciesType = speciesType;
 }
 
 WritePhrase::~WritePhrase() {
