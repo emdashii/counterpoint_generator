@@ -4,7 +4,6 @@
 
 using namespace std;
 
-// TODO complete this class
 class Phrase {
 public:
 	// Constructor

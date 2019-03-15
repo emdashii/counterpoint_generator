@@ -6,8 +6,7 @@
 
 using namespace std;
 
-// TODO: Complete this class
-// NOTE -- https://www.hacklily.org/
+// NOTE: exported code can be pasted at https://www.hacklily.org/ to see sheet music generate by it
 class ExportToFile {
 public:
 	// Constructor with desired output file info
@@ -26,11 +25,13 @@ private:
 	string composer;
 	string key = "";
 	string time = "";
-	int numVoices;
 	// Vector with phrases to be exported
 	vector<Phrase*> phrases;
 
-	// Write just the notes for a single phrase
-	string convertNoteToOutput(Note note);
+	// Other helper functions
+	string convertNoteToOutput(Note note) const;
+	// Function to write the upper and lower voice for one phrase
 	void writePhrase(Phrase phrase, int phraseNumber, ofstream &outputFileStream);
+	// Check to see if a file exists
+	static bool exists(const string& fileName);
 };

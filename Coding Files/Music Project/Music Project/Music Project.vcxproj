@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="ExportToFile.cpp" />
     <ClCompile Include="GenerateLowerVoice.cpp" />
+    <ClCompile Include="HelperFunctions.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="Phrase.cpp" />
@@ -128,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="ExportToFile.h" />
     <ClInclude Include="GenerateLowerVoice.h" />
+    <ClInclude Include="HelperFunctions.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="Phrase.h" />
     <ClInclude Include="Species.h" />
