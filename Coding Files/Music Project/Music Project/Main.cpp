@@ -74,7 +74,6 @@
  *
  */
 
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -85,9 +84,6 @@
 #include "WritePhrase.h"
 #include "Phrase.h"
 #include "HelperFunctions.h"
-// #include "Note.h"
-// #include "WritePhrase.h"
-// #include "SpeciesTwo.h"
 
 using namespace std;
 
