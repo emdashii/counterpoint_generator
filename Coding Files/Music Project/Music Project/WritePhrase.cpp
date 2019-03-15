@@ -296,6 +296,7 @@ void WritePhrase::writeUpperVoiceOne() {
 }
 
 void WritePhrase::writeUpperVoiceTwo() {
+	/*
 	if (rand() % 2 == 1) {
 		upperVoiceI.push_back(5);
 	}
@@ -343,4 +344,5 @@ void WritePhrase::writeLowerVoiceTwo() {
 	for (auto i : lowerVoiceI) {
 		lowerVoiceN.push_back(convertIntToNoteTwo(i));
 	}
+	*/
 }
