@@ -3,7 +3,7 @@
 #include "SpeciesTwo.h"
 #include "SpeciesOne.h"
 #include <vector>
-using namespace::std;
+using namespace std;
 
 // TODO: Complete this class
 

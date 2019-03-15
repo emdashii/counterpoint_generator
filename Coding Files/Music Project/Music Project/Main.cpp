@@ -94,7 +94,7 @@ int main() {
 
 	WritePhrase::setSeed(12);
 	try {
-		//tests();	// Tests ExportToFile
+		//tests1();	// Tests ExportToFile
 		tests2();	// Tests WritePhrase
 			
 	}

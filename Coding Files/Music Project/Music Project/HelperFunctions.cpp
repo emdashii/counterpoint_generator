@@ -129,19 +129,19 @@ void tests1() {
 	Note note3(Note_D4, 4);
 	Note note4(Note_D4, 2);
 
-	vector<Note*> upperPhrase1 = { &note1, &note2 };
-	vector<Note*> lowerPhrase1 = { &note3, &note4 };
-	vector<Note*> upperPhrase2 = { &note2, &note1 };
-	vector<Note*> lowerPhrase2 = { &note4, &note3 };
+	const vector<Note*> upperPhrase1 = { &note1, &note2 };
+	const vector<Note*> lowerPhrase1 = { &note3, &note4 };
+	const vector<Note*> upperPhrase2 = { &note2, &note1 };
+	const vector<Note*> lowerPhrase2 = { &note4, &note3 };
 
-	//	Create some phrases
+	// Create some phrases
 	Phrase phrase1(upperPhrase1, lowerPhrase1);
 	Phrase phrase2(upperPhrase2, lowerPhrase2);
 
 	ExportToFile exportTest("lilyPondOutput1", "noice title", "caleb is a great composer");
 	exportTest.addPhrase(&phrase1);
 	exportTest.addPhrase(&phrase2);
-	// export
+	// Export
 	exportTest.WriteOutput();
 }
 
@@ -210,8 +210,7 @@ void tests2() {
 	Phrase phrase44(phrase4.getUpperVoice(), phrase4.getLowerVoice(), phrase4.getKey(), phrase4.getTimeSignature());
 	Phrase phrase55(phrase5.getUpperVoice(), phrase5.getLowerVoice(), phrase5.getKey(), phrase5.getTimeSignature());
 
-
-	ExportToFile exportTest("lilyPondOutput1.7", "SpeciesTwo test part 1", "TheProgarm (duh)");
+	ExportToFile exportTest("lilyPondOutput1.9", "SpeciesTwo test part 1", "TheProgram (duh)");
 	exportTest.addPhrase(&phrase11);
 	exportTest.addPhrase(&phrase22);
 	exportTest.addPhrase(&phrase33);

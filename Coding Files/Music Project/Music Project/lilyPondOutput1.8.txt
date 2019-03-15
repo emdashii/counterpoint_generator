@@ -1,6 +1,6 @@
 \header {
 title = "SpeciesTwo test part 1"
-composer = "TheProgarm (duh)"
+composer = "TheProgram (duh)"
 tagline = "Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program"
 }
 \paper {

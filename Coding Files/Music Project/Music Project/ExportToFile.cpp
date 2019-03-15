@@ -7,22 +7,22 @@
 
 ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) : title(musicTitle), composer(composer) {
 
-	//TODO may want to change this ending to proper lily pond file extension, but leaving like this for now for testing purposes
-	// Put ending of .txt on the end of the filename if it doesn't have that ending already
-	if (fileName.length() < 4) {
-		fileName += ".txt";
-	}
-	else if (fileName.compare(fileName.length() - 4, fileName.length(), ".txt")) { // returns 0 if it does have that ending
-		fileName += ".txt";
-	}
+	// Verify that the file has the proper ending
+	verifyEnding(fileName);
 
 	// Check to see if that file already exists, so we don't accidentally overwrite it or append to it
 	while (exists(fileName)) {
 		cout << "Warning a file already exists with the chosen output filename: " << fileName << "!" << endl
 			<< "Please enter a different filename: " << endl;
 		string newFileName;
-		cin >> newFileName;
+		getline(cin,newFileName);
+		// Clear left over '\n'etc.
+		cin.ignore(1000, '\n');
+		// If blank, reassign current name
 		if (newFileName.empty()) newFileName = fileName;
+		// Verify that the file has the proper ending
+		verifyEnding(newFileName);
+		// Assign new name and check to see if it is valid
 		fileName = newFileName;
 	}
 
@@ -68,7 +68,6 @@ void ExportToFile::WriteOutput() {
 		<< "\\paper {" << endl
 		<< "	system-system-spacing #'basic-distance = #16" << endl
 		<< "}" << endl
-		// Leaving this line hard coded here for now, we may want to change this later
 		<< "global = { \\key " << key << " \\major \\time " << time << " }" << endl << endl << endl;
 
 	// Loop through phrases to be printed
@@ -120,7 +119,6 @@ void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& output
 
 	// write comment with phrase info
 	outputFileStream << "% Phrase " << phraseNumber << endl;
-	// Leaving this hardcoded for now as well, may want to change later |||||| Changed so that each phrase could hold its own key
 	outputFileStream << topPhraseName << " = { \\clef \"treble\" \\key " << phrase.getKey() << " \\major \\time " << phrase.getTimeSig() << endl;
 	// Time to print out the notes for the top voice of this phrase
 	for (auto note : phrase.getUpperVoice()) {
@@ -129,7 +127,6 @@ void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& output
 	// End top voice of this phrase
 	outputFileStream << "\\bar \"||\" }" << endl;
 
-	// Leaving this hardcoded for now as well, may want to change later
 	outputFileStream << bottomPhraseName << " = { \\clef \"treble\" \\key " << phrase.getKey() << " \\major \\time " << phrase.getTimeSig() << endl;
 	// Time to print out the notes for the bottom voice of this phrase
 	for (auto note : phrase.getLowerVoice()) {
@@ -142,6 +139,16 @@ void ExportToFile::writePhrase(Phrase phrase, int phraseNumber, ofstream& output
 bool ExportToFile::exists(const string& fileName) {
 	ifstream fileStream(fileName.c_str());
 	return fileStream.good();
+}
+
+void ExportToFile::verifyEnding(string &fileName) {
+	// Put ending of .txt on the end of the filename if it doesn't have that ending already
+	if (fileName.length() < 4) {
+		fileName += ".txt";
+	}
+	else if (fileName.compare(fileName.length() - 4, fileName.length(), ".txt")) { // returns 0 if it does have that ending
+		fileName += ".txt";
+	}
 }
 
 // General output outline

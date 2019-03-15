@@ -34,4 +34,6 @@ private:
 	void writePhrase(Phrase phrase, int phraseNumber, ofstream &outputFileStream);
 	// Check to see if a file exists
 	static bool exists(const string& fileName);
+	// Verifies that a filename has a proper ending
+	void verifyEnding(string &fileName);
 };
