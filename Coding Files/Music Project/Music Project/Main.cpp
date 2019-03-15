@@ -78,6 +78,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <ctime>
 #include "ExportToFile.h"
 #include "GenerateLowerVoice.h"
 #include "SpeciesOne.h"
@@ -92,7 +93,7 @@ using namespace std;
 
 int main() {
 
-	WritePhrase::setSeed(12);
+	WritePhrase::setSeed(time(NULL));
 	try {
 		//tests1();	// Tests ExportToFile
 		//tests2();	// Tests WritePhrase
