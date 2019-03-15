@@ -20,8 +20,9 @@ public:
 	int getTotalLength() const { return phraseLength * beatsPerMeasure; }
 	void setBeatsPerMeasure(int beatsPerMeasure) { this->beatsPerMeasure = beatsPerMeasure; }
 	void setSpeciesType(int speciesType) { this->speciesType = speciesType; }
-	vector<Note*> getLowerVoice() { return lowerVoiceN; }
-	vector<Note*> getUpperVoice() { return upperVoiceN; }
+	Phrase getPhrase() { return phraseN; }
+	//vector<Note*> getLowerVoice() { return lowerVoiceN; }
+	//vector<Note*> getUpperVoice() { return upperVoiceN; }
 
 	void writeThePhrase();
 	void printPhraseI();
@@ -47,9 +48,13 @@ private:
 	void writeUpperVoiceOne();
 	void writeUpperVoiceTwo();
 	void writeLowerVoiceTwo();
-	vector<Note*> upperVoiceN;
-	vector<Note*> lowerVoiceN;
+
+	Phrase phraseN;
+	//vector<Note*> upperVoiceN;
+	//vector<Note*> lowerVoiceN;
+
 	vector<int> upperVoiceI;
 	vector<int> lowerVoiceI;
+	
 	vector<string> intervalStrings;
 };

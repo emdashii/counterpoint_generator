@@ -112,6 +112,8 @@ int main() {
 	string authorInfoDesired;
 	string titleDesired;
 
+	ExportToFile export();
+
 	getInput("Enter the number of phrases you want: ", numPhrasesDesired);
 	for (int i = 0; i < numPhrasesDesired; i++) {
 		cout << "Choose specifics for phrase " << to_string(i + 1) << ":" << endl;
@@ -120,7 +122,8 @@ int main() {
 		getInput("	Enter how many measures you want phrase " + to_string(i + 1) + " to consist of: ", lengthDesired);
 		getInput("	Enter the time signature you want for phrase " + to_string(i + 1) + ". (Ie. 4/4): ", timeSignatureDesired);
 		WritePhrase phrase(keyDesired, lengthDesired, speciesTypeDesired);
-		Phrase phraseTEMP(phrase.getUpperVoice(), phrase.getLowerVoice(), keyDesired, timeSignatureDesired);
+		phrase.writeThePhrase();
+		export.addPhrase(phrase.getPhrase());
 	}
 	getInput("Enter your desired output filename: ", fileNameDesired);
 	getInput("Enter the composer of this piece: ", authorInfoDesired);

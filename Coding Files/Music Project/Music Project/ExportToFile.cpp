@@ -28,20 +28,10 @@ ExportToFile::ExportToFile(string fileName, string musicTitle, string composer) 
 }
 
 void ExportToFile::addPhrase(Phrase* phrase) {
-
-	// Changed how this part works in the output section to get a specific time signature and key for each phrases
-	// If the key for this object hasn't been assigned yet, assign it to this phrase's key
+	// Assign stuff
 	key = phrase->getKey();
-
-	// Else verify this phrase's key is the same as the other phrases' keys in this class
-	if (phrase->getKey() != key) throw runtime_error("Error, cannot export phrases of different keys!");
-
-	// If the time for this object hasn't been assigned yet, assign it to this phrase's time signature
-	if (time == "") time = phrase->getTimeSig();
-
-	// Else verify this phrase's time signature is the same as the other phrases' time signature in this class
-	else if (phrase->getTimeSig() != time) throw runtime_error("Error, cannot export phrases with different time signatures!");
-
+	time = phrase->getTimeSig();
+	// Add prhase
 	phrases.push_back(phrase);
 }
 
