@@ -296,7 +296,6 @@ void WritePhrase::writeUpperVoiceOne() {
 }
 
 void WritePhrase::writeUpperVoiceTwo() {
-	/*
 	if (rand() % 2 == 1) {
 		upperVoiceI.push_back(5);
 	}
@@ -315,7 +314,7 @@ void WritePhrase::writeUpperVoiceTwo() {
 		upperVoiceI.push_back(nextNote);
 	}
 	upperVoiceI.push_back(8);
-
+	/*
 	vector<int> toInsert;
 	for (int i = 1; i < upperVoiceI.size(); i++) {
 		SpeciesTwo two;
@@ -336,6 +335,7 @@ void WritePhrase::writeUpperVoiceTwo() {
 		upperVoiceN.push_back(convertIntToNote(i));
 	}
 	upperVoiceN.push_back(convertIntToNoteTwo(upperVoiceI.size()-1));
+	*/
 }
 
 void WritePhrase::writeLowerVoiceTwo() {
@@ -343,6 +343,5 @@ void WritePhrase::writeLowerVoiceTwo() {
 	lowerVoiceI = lower.getLowerVoice();
 	for (auto i : lowerVoiceI) {
 		lowerVoiceN.push_back(convertIntToNoteTwo(i));
-	}
-	*/
+	}	
 }
