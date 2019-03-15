@@ -1,6 +1,36 @@
+#include <iostream>
 #include "HelperFunctions.h"
 #include "ExportToFile.h"
 #include "WritePhrase.h"
+
+void getInput(const string& prompt, int& variable) {
+	bool error = false;
+	do {
+		error = false;
+		cout << prompt << endl;
+		if (!(cin >> variable)) {
+			error = true;
+			cout << "Invalid input! Please try again." << endl;
+			cin.clear();
+		}
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	} while (error);
+}
+
+void getInput(const string& prompt, string& variable) {
+	bool error = false;
+	do {
+		error = false;
+		cout << prompt << endl;
+		//TODO Fix this
+		if (!(cin >> variable) /*|| stoi(variable) == ------*/ ) {
+			error = true;
+			cout << "Invalid input! Please try again." << endl;
+			cin.clear();
+		}
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	} while (error);
+}
 
 /**
  * @brief
@@ -63,7 +93,7 @@ void GenerateNoteConversionCases() {
 		 *		break;
 		 */
 
-		 // If necessary, print note assignment lines for sharps and flats
+		// If necessary, print note assignment lines for sharps and flats
 		if (letter != 'B' && letter != 'E' && keyNumber < 87) {
 			keyNumber++;
 			// Print case for current note's sharp
@@ -89,35 +119,35 @@ void GenerateNoteConversionCases() {
  */
 string getSuffix(int keyLabelNumber) {
 	switch (keyLabelNumber) {
-	case 0:
-		return ",,,";
-		break;
-	case 1:
-		return ",,";
-		break;
-	case 2:
-		return ",";
-		break;
-	case 3:
-		return "";
-		break;
-	case 4:
-		return "'";
-		break;
-	case 5:
-		return "''";
-		break;
-	case 6:
-		return "'''";
-		break;
-	case 7:
-		return "''''";
-		break;
-	case 8:
-		return "'''''";
-		break;
-	default:
-		throw runtime_error("Error could not get proper suffix when converting NoteType to output for lily pond!");
+		case 0:
+			return ",,,";
+			break;
+		case 1:
+			return ",,";
+			break;
+		case 2:
+			return ",";
+			break;
+		case 3:
+			return "";
+			break;
+		case 4:
+			return "'";
+			break;
+		case 5:
+			return "''";
+			break;
+		case 6:
+			return "'''";
+			break;
+		case 7:
+			return "''''";
+			break;
+		case 8:
+			return "'''''";
+			break;
+		default:
+			throw runtime_error("Error could not get proper suffix when converting NoteType to output for lily pond!");
 	}
 }
 
@@ -129,10 +159,10 @@ void tests1() {
 	Note note3(Note_D4, 4);
 	Note note4(Note_D4, 2);
 
-	const vector<Note*> upperPhrase1 = { &note1, &note2 };
-	const vector<Note*> lowerPhrase1 = { &note3, &note4 };
-	const vector<Note*> upperPhrase2 = { &note2, &note1 };
-	const vector<Note*> lowerPhrase2 = { &note4, &note3 };
+	const vector<Note*> upperPhrase1 = {&note1, &note2};
+	const vector<Note*> lowerPhrase1 = {&note3, &note4};
+	const vector<Note*> upperPhrase2 = {&note2, &note1};
+	const vector<Note*> lowerPhrase2 = {&note4, &note3};
 
 	// Create some phrases
 	Phrase phrase1(upperPhrase1, lowerPhrase1);

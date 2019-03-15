@@ -95,14 +95,14 @@ int main() {
 	WritePhrase::setSeed(12);
 	try {
 		//tests1();	// Tests ExportToFile
-		tests2();	// Tests WritePhrase
+		//tests2();	// Tests WritePhrase
 			
 	}
 	catch (runtime_error &exception) {
 		cout << exception.what() << endl;
 	}
 
-	// get:
+	// get inputs
 	int numPhrasesDesired;
 	string keyDesired;
 	int lengthDesired;
@@ -112,6 +112,9 @@ int main() {
 	string fileNameDesired;
 	string authorInfoDesired;
 	string titleDesired;
+
+	getInput("Enter the number of phrases you want: ", numPhrasesDesired);
+	getInput("Enter the key you want: ", keyDesired);
 
 
 	return 0;
