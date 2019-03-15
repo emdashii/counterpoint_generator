@@ -299,17 +299,37 @@ void tests2() {
 	phrase3.printPhraseI();
 	phrase3.calculateInterval();
 	cout << endl;
-	//phrase3.printPhraseN();
+	phrase3.printPhraseN();
 	cout << endl;
 
-	Phrase phrase11(phrase1.getUpperVoice(), phrase1.getLowerVoice());
-	Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice());
-	Phrase phrase33(phrase3.getUpperVoice(), phrase3.getLowerVoice());
+	WritePhrase phrase4("F", 4);
+	phrase4.setSpeciesType(0);
+	phrase4.writeThePhrase();
+	phrase4.printPhraseI();
+	phrase4.calculateInterval();
+	cout << endl;
+	phrase4.printPhraseN();
 
-	ExportToFile exportTest("lilyPondOutput1.4", "SpeciesOne working? part 2", "E");
+	WritePhrase phrase5("C", 4);
+	phrase4.setSpeciesType(2);
+	phrase4.writeThePhrase();
+	phrase4.printPhraseI();
+	cout << endl;
+	phrase4.printPhraseN();
+
+	Phrase phrase11(phrase1.getUpperVoice(), phrase1.getLowerVoice(), phrase1.getKey(), phrase1.getTimeSignature());
+	Phrase phrase22(phrase2.getUpperVoice(), phrase2.getLowerVoice(), phrase2.getKey(), phrase2.getTimeSignature());
+	Phrase phrase33(phrase3.getUpperVoice(), phrase3.getLowerVoice(), phrase3.getKey(), phrase3.getTimeSignature());
+	Phrase phrase44(phrase4.getUpperVoice(), phrase4.getLowerVoice(), phrase4.getKey(), phrase4.getTimeSignature());
+	Phrase phrase55(phrase5.getUpperVoice(), phrase5.getLowerVoice(), phrase5.getKey(), phrase5.getTimeSignature());
+
+
+	ExportToFile exportTest("lilyPondOutput1.7", "SpeciesTwo test part 1", "TheProgarm (duh)");
 	exportTest.addPhrase(&phrase11);
 	exportTest.addPhrase(&phrase22);
 	exportTest.addPhrase(&phrase33);
+	exportTest.addPhrase(&phrase44);
+	//exportTest.addPhrase(&phrase55);
 	// export
 	exportTest.WriteOutput();
 }

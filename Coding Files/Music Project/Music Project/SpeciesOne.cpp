@@ -33,6 +33,10 @@ int SpeciesOne::chooseNextNote() {
 	m_noSimilarOctaves();
 	//m_onlyUse1Once(); // It is not working... so changed something else to get a similar effect. Code there now for reference for me later
 
+	if (!(count % 4 == 0)) {
+		h_removeEighth();
+	}
+
 	// For debugging
 	cout << "NoteOptions emptied:    ";
 	for (auto o : noteOptions) {
@@ -172,6 +176,13 @@ void SpeciesOne::h_noSecondOrNinth() {
 	}
 	// Find any 9ths
 	vector<int>::iterator itrr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 8);
+	if (itrr != noteOptions.end()) {
+		noteOptions.erase(itrr);	// Remove them
+	}
+}
+
+void SpeciesOne::h_removeEighth() {
+	vector<int>::iterator itrr = find(noteOptions.begin(), noteOptions.end(), noteBelow + 7);
 	if (itrr != noteOptions.end()) {
 		noteOptions.erase(itrr);	// Remove them
 	}

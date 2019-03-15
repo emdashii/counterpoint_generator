@@ -31,6 +31,7 @@ protected:
 	void h_avoidDimFifth();
 	void h_noFourthOrSeventh();
 	void h_noSecondOrNinth();
+	void h_removeEighth();
 
 	void m_noParallelFifths();
 	void m_noSimilarFifths();
@@ -42,5 +43,6 @@ protected:
 	// For imitative counterpoint
 	vector<int> lower;
 	vector<int> upper;
+	int count = 0;
 };
 
