@@ -218,7 +218,7 @@ int WritePhrase::convertScaleDegreeToHalfStep(int scaleDegree) {
 }
 
 Note WritePhrase::convertKeyToNote() {
-	if (key == "C") {
+	if (key == "C") {		// C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B
 		return Note(Note_C4);
 	}
 	else if (key == "Db") {
@@ -299,7 +299,7 @@ void WritePhrase::writeUpperVoiceTwo() {
 	else {
 		upperVoiceI.push_back(8);
 	}
-	for (int i = 1; i < lowerVoiceI.size() - 2; i++) {
+	for (int i = 1; i < lowerVoiceI.size() - 1; i++) {
 		SpeciesOne one;
 		one.setNoteBefore(upperVoiceI.at(i - 1));
 		one.setNoteBelow(lowerVoiceI.at(i));
@@ -311,28 +311,28 @@ void WritePhrase::writeUpperVoiceTwo() {
 		upperVoiceI.push_back(nextNote);
 	}
 	upperVoiceI.push_back(8);
-	/*
-	vector<int> toInsert;
-	for (int i = 1; i < upperVoiceI.size(); i++) {
+
+	// Now adds notes between the notes there.
+	
+	vector<int> toInsert;	// holds notes to be added
+	for (int i = 1; i < lowerVoiceI.size() - 2; i++) {
 		SpeciesTwo two;
 		two.setNoteBefore(upperVoiceI.at(i));
-		two.setNoteBelow(lowerVoiceI.at(i)); // TODO Note This line errors!
-		two.setNoteBeforeAndBelow(lowerVoiceI.at(i));
 		if (i >= 2) {
 			two.setNoteTwoBefore(upperVoiceI.at(i - 1));
 		}
 		toInsert.push_back(two.chooseNextNote());
 	}
-	for (int i = 0; i < lowerVoiceI.size()-2; i++) {
+	for (int i = 0; i < toInsert.size(); i++) {
 		upperVoiceI.insert((upperVoiceI.begin() + (i * 2) + 1), toInsert.at(i));
 	}
 	upperVoiceI.insert(upperVoiceI.end()-1,7);
 
-	for (int i = 0; i < upperVoiceI.size()-1; i++) {
-		upperVoiceN.push_back(convertIntToNote(i));
+	for (int i = 0; i < upperVoiceI.size() - 1; i++) {
+		phraseN.addNoteToUpperVoice(convertIntToNote(i));
 	}
-	upperVoiceN.push_back(convertIntToNoteTwo(upperVoiceI.size()-1));
-	*/
+	phraseN.addNoteToUpperVoice(convertIntToNoteTwo(upperVoiceI.at(upperVoiceI.size()-1)));
+	
 }
 
 void WritePhrase::writeLowerVoiceTwo() {

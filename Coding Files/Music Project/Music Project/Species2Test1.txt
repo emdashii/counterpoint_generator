@@ -1,0 +1,29 @@
+\header {
+title = "e"
+composer = "e"
+tagline = "Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program"
+}
+\paper {
+	system-system-spacing #'basic-distance = #16
+}
+
+
+% Phrase 1
+"topPhrase1" = { \clef "treble" \key c \major \time 4/4
+ b'4 c'4 d'4 e'4 f'4 g'4 a'4 b'4 c''4 d''4 e''4 f''4 c''2\bar "||" }
+"bottomPhrase1" = { \clef "treble" \key c \major \time 4/4
+ c'2 g'2 g'2 b'2 e'2 g'2 d'2 c'2}
+\score {
+	<<
+		<<
+			\new Voice = "one" {
+				\"topPhrase1"
+			}
+			>>
+			\new Voice = "one" {
+				\"bottomPhrase1"
+			}
+	>>
+		\layout{}
+		\midi{}
+}

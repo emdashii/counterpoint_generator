@@ -114,6 +114,7 @@ int main() {
 	getInput("Enter the number of phrases you want: ", numPhrasesDesired);
 	for (int i = 0; i < numPhrasesDesired; i++) {
 		cout << "Choose specifics for phrase " << to_string(i + 1) << ":" << endl;
+		cout << "    Options for Key: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B" << endl;
 		getInput("	Enter the key you want phrase " + to_string(i+1) + " to be in: ", keyDesired);
 		getInput("	Which species type would you like phrase " + to_string(i + 1) + " to be (0, 1 or 2): ", speciesTypeDesired);
 		getInput("	Enter how many measures you want phrase " + to_string(i + 1) + " to consist of: ", lengthDesired);
