@@ -5,15 +5,14 @@
 using namespace std;
 
 // TODO: Complete this class
-// TODO Make this class use the Phrase class
 
 class WritePhrase {
 public:
 	WritePhrase(string key, int phraseLength);
 	// Overloaded constructor
-	WritePhrase(string key, int phraseLength, int speciesType);
-	// Default constructor
-	WritePhrase() = default;
+	WritePhrase(string key, int phraseLength, int speciesType, int beatsPerMeasure);
+	// // Default constructor
+	// WritePhrase() = default;
 
 	static void setSeed(int seed);
 	int getPhraseLength() const { return phraseLength; }

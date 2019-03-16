@@ -9,6 +9,7 @@ void getInput(const string &prompt, string &variable);
 
 // The following 3 functions were used to write/generate code
 void GenerateNoteEnum();
+void GenerateNoteVector();
 void GenerateNoteConversionCases();
 string getSuffix(int keyLabelNumber);
 

@@ -79,15 +79,14 @@
 #include <string>
 #include <ctime>
 #include "ExportToFile.h"
-#include "GenerateLowerVoice.h"
-#include "SpeciesOne.h"
 #include "WritePhrase.h"
-#include "Phrase.h"
 #include "HelperFunctions.h"
 
 using namespace std;
 
 int main() {
+
+	GenerateNoteVector();
 
 	WritePhrase::setSeed(time(NULL));
 	try {
@@ -113,17 +112,13 @@ int main() {
 	getInput("Enter the number of phrases you want: ", numPhrasesDesired);
 	for (int i = 0; i < numPhrasesDesired; i++) {
 		cout << "Choose specifics for phrase " << to_string(i + 1) << ":" << endl;
-		cout << "    Options for Key: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B" << endl;
+		cout << "	Options for Key: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B" << endl;
 		getInput("	Enter the key you want phrase " + to_string(i+1) + " to be in: ", keyDesired);
 		getInput("	Which species type would you like phrase " + to_string(i + 1) + " to be (0, 1 or 2): ", speciesTypeDesired);
 		getInput("	Enter how many measures you want phrase " + to_string(i + 1) + " to consist of: ", lengthDesired);
 		getInput("	Enter how many notes you want per measure for phrase " + to_string(i + 1) + ": ", beatsPerMeasureDesired);
 		
-		WritePhrase phrase;
-		phrase.setKey(keyDesired);
-		phrase.setSpeciesType(speciesTypeDesired);
-		phrase.setLength(lengthDesired);
-		phrase.setBeatsPerMeasure(beatsPerMeasureDesired);
+		WritePhrase phrase(keyDesired,lengthDesired,speciesTypeDesired,beatsPerMeasureDesired);
 		phrase.writeThePhrase();
 		myFileExport.addPhrase(phrase.getPhrase());
 	}

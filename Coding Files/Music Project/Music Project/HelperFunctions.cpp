@@ -67,6 +67,41 @@ void GenerateNoteEnum() {
 
 /**
  * @brief
+ * This function is used to generate the code for the Note enum -- please don't remove this function as we may want to use it later
+ */
+void GenerateNoteVector() {
+	char letter = 'A';
+	int keyNumber = 0;
+	int keyLabelNumber = 0;
+
+	for (; keyNumber < 88; keyNumber++) {
+
+		// Check and update letter and keyLabelNumber
+		if (letter == 'H') letter = 'A';
+		if (letter == 'C') keyLabelNumber++;
+
+		//make_pair("Note_A0", 0),
+		// Print note assignment line for current note
+		cout << "make_pair(\"Note_" << letter << keyLabelNumber << "\", " << keyNumber << ")," << endl;
+
+		// If necessary, print note assignment lines for sharps and flats
+		if (letter != 'B' && letter != 'E' && keyNumber < 87) {
+			keyNumber++;
+			// Print note assignment line for current letter's sharp
+			cout << "make_pair(\"Note_" << letter << keyLabelNumber << "_sharp" << "\", " << keyNumber << ")," << endl;
+			// Print note assignment line for next letter's flat
+			char nextLetter = letter + 1;
+			if (nextLetter == 'H') nextLetter = 'A';
+			cout << "make_pair(\"Note_" << nextLetter << keyLabelNumber << "_flat" << "\", " << keyNumber << ")," << endl;
+		}
+
+		// Increment values
+		letter++;
+	}
+}
+
+/**
+ * @brief
  * This function is used to generate the code for the ExportToFile::convertNoteToOutput function -- please don't remove this function as we may want to use it later
  */
 void GenerateNoteConversionCases() {

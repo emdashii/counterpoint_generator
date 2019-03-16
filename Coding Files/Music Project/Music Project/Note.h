@@ -1,6 +1,9 @@
 #pragma once
 #include <ostream>
 #include <iostream>
+#include <vector>
+#include <utility>
+#include <string>
 using namespace std;
 
 /*
@@ -10,6 +13,13 @@ using namespace std;
  * and you got the number of half steps between them
  * 
  */
+
+//vector<int> test;	// Even this line breaks it and idk why?
+
+// vector< pair <string, int>> testVector = {
+// 	make_pair("a", 0)
+// };
+
 enum NoteType {
 	Note_A0 = 0,		// a,,,
 	Note_A0_sharp = 1,	// ais,,,

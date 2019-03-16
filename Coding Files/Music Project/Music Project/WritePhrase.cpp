@@ -11,10 +11,11 @@ WritePhrase::WritePhrase(string key, int phraseLength) {
 	this->phraseLength = phraseLength;
 }
 
-WritePhrase::WritePhrase(string key, int phraseLength, int speciesType) {
+WritePhrase::WritePhrase(string key, int phraseLength, int speciesType, int beatsPerMeasure) {
 	this->key = key;
 	this->phraseLength = phraseLength;
 	this->speciesType = speciesType;
+	this->beatsPerMeasure = beatsPerMeasure;
 }
 
 void WritePhrase::setSeed(int seed) {
