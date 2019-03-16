@@ -20,19 +20,6 @@ WritePhrase::WritePhrase(string key, int phraseLength, int speciesType, int beat
 
 void WritePhrase::setSeed(int seed) {
 	srand(seed);
-	// For manually entering the seed
-	/*int seed;
-	cout << "Enter seed for random numbers: ";
-	cin >> seed;
-	while (cin.fail()) {
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Try again: " << endl;
-		cin >> seed;
-	}
-	srand(seed);
-	cout << "Seed set to " << seed << endl;
-	*/
 }
 
 // THIS IS WHERE THE MAGIC HAPPENS (along with everywhere else)
@@ -301,7 +288,23 @@ void WritePhrase::writeUpperVoiceOne() {
 }
 
 void WritePhrase::writeUpperVoiceTwo() {
-	if (rand() % 2 == 1) {
+	SpeciesOne imitative;
+	imitative.writeImitativeTwoVoices(phraseLength * beatsPerMeasure);
+	upperVoiceI = imitative.getImitativeUpper();
+	upperVoiceI.emplace(upperVoiceI.begin(), 1);
+
+	for (int i = 0; i < lowerVoiceI.size(); i++) {
+		upperVoiceI.insert((upperVoiceI.begin() + (i * 2) + 1), upperVoiceI.at(i*2)+1);
+	}
+
+	// Output
+	for (int i = 0; i < lowerVoiceI.size()-1; i++) {
+		phraseN.addNoteToUpperVoice(convertIntToNote(upperVoiceI.at(i)));
+	}
+	phraseN.addNoteToUpperVoice(convertIntToNote(upperVoiceI.at(upperVoiceI.size() - 1)));
+
+	// This idea is close to working but it's not so I'm going to try something else
+	/*if (rand() % 2 == 1) {
 		upperVoiceI.push_back(5);
 	}
 	else {
@@ -339,14 +342,21 @@ void WritePhrase::writeUpperVoiceTwo() {
 	for (int i = 0; i < upperVoiceI.size() - 1; i++) {
 		phraseN.addNoteToUpperVoice(convertIntToNote(i));
 	}
-	phraseN.addNoteToUpperVoice(convertIntToNoteTwo(upperVoiceI.at(upperVoiceI.size()-1)));
+	phraseN.addNoteToUpperVoice(convertIntToNoteTwo(upperVoiceI.at(upperVoiceI.size()-1)));*/
 	
 }
 
 void WritePhrase::writeLowerVoiceTwo() {
-	GenerateLowerVoice lower(phraseLength * beatsPerMeasure / 2);
+	SpeciesOne imitativeLower;
+	imitativeLower.writeImitativeTwoVoices(phraseLength * beatsPerMeasure / 2 );
+	lowerVoiceI = imitativeLower.getImitativeLower();
+	for (auto i : lowerVoiceI) {
+		phraseN.addNoteToLowerVoice(convertIntToNoteTwo(i));
+	}
+	// See comment above. I'm trying a differnt idea, but this may be useful so I'm keeping it
+	/*GenerateLowerVoice lower(phraseLength * beatsPerMeasure / 2);
 	lowerVoiceI = lower.getLowerVoice();
 	for (auto i : lowerVoiceI) {
 		phraseN.addNoteToLowerVoice(convertIntToNoteTwo(i));
-	}	
+	}	*/
 }
