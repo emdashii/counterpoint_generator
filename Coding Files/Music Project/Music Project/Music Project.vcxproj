@@ -126,6 +126,7 @@
     <ClCompile Include="Species.cpp" />
     <ClCompile Include="SpeciesOne.cpp" />
     <ClCompile Include="SpeciesTwo.cpp" />
+    <ClCompile Include="TypesAndGlobals.cpp" />
     <ClCompile Include="WritePhrase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +138,7 @@
     <ClInclude Include="Species.h" />
     <ClInclude Include="SpeciesOne.h" />
     <ClInclude Include="SpeciesTwo.h" />
+    <ClInclude Include="TypesAndGlobals.h" />
     <ClInclude Include="WritePhrase.h" />
   </ItemGroup>
   <ItemGroup>
