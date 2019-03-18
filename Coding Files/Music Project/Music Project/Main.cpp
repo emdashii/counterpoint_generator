@@ -86,21 +86,21 @@ using namespace std;
 
 int main() {
 
-	GenerateNoteVector();
+	//GenerateNoteVector();
 
 	WritePhrase::setSeed(time(NULL));
 	try {
 		//tests1();	// Tests ExportToFile
 		//tests2();	// Tests WritePhrase
 	}
-	catch (runtime_error &exception) {
+	catch (runtime_error& exception) {
 		cout << exception.what() << endl;
 	}
 
 	// get inputs
 	int numPhrasesDesired;
 	string keyDesired;
-	int lengthDesired;	
+	int lengthDesired;
 	int speciesTypeDesired;
 	int beatsPerMeasureDesired; //only 2, 3, or 4 notes --> // only 2/4, 3/4, or 4/4
 	string fileNameDesired;
@@ -109,27 +109,32 @@ int main() {
 
 	ExportToFile myFileExport;
 
-	getInput("Enter the number of phrases you want: ", numPhrasesDesired);
-	for (int i = 0; i < numPhrasesDesired; i++) {
-		cout << "Choose specifics for phrase " << to_string(i + 1) << ":" << endl;
-		cout << "	Options for Key: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B" << endl;
-		getInput("	Enter the key you want phrase " + to_string(i+1) + " to be in: ", keyDesired);
-		getInput("	Which species type would you like phrase " + to_string(i + 1) + " to be (0, 1 or 2): ", speciesTypeDesired);
-		getInput("	Enter how many measures you want phrase " + to_string(i + 1) + " to consist of: ", lengthDesired);
-		getInput("	Enter how many notes you want per measure for phrase " + to_string(i + 1) + ": ", beatsPerMeasureDesired);
-		
-		WritePhrase phrase(keyDesired,lengthDesired,speciesTypeDesired,beatsPerMeasureDesired);
-		phrase.writeThePhrase();
-		myFileExport.addPhrase(phrase.getPhrase());
-	}
-	getInput("Enter your desired output filename: ", fileNameDesired);
-	getInput("Enter the composer of this piece: ", authorInfoDesired);
-	getInput("Enter the title for this piece: ", titleDesired);
+	try {
+		getInput("Enter the number of phrases you want: ", numPhrasesDesired);
+		for (int i = 0; i < numPhrasesDesired; i++) {
+			cout << "Choose specifics for phrase " << to_string(i + 1) << ":" << endl;
+			cout << "	Options for Key: C, Db, D, Eb, E, F, F#, G, Ab, A, Bb, B" << endl;
+			getInput("	Enter the key you want phrase " + to_string(i + 1) + " to be in: ", keyDesired);
+			getInput("	Which species type would you like phrase " + to_string(i + 1) + " to be (0, 1 or 2): ", speciesTypeDesired);
+			getInput("	Enter how many measures you want phrase " + to_string(i + 1) + " to consist of: ", lengthDesired);
+			getInput("	Enter how many notes you want per measure for phrase " + to_string(i + 1) + ": ", beatsPerMeasureDesired);
 
-	myFileExport.setFileName(fileNameDesired);
-	myFileExport.setComposer(authorInfoDesired);
-	myFileExport.setTitle(titleDesired);
-	myFileExport.WriteOutput();
+			WritePhrase phrase(keyDesired, lengthDesired, speciesTypeDesired, beatsPerMeasureDesired);
+			phrase.writeThePhrase();
+			myFileExport.addPhrase(phrase.getPhrase());
+		}
+		getInput("Enter your desired output filename: ", fileNameDesired);
+		getInput("Enter the composer of this piece: ", authorInfoDesired);
+		getInput("Enter the title for this piece: ", titleDesired);
+
+		myFileExport.setFileName(fileNameDesired);
+		myFileExport.setComposer(authorInfoDesired);
+		myFileExport.setTitle(titleDesired);
+		myFileExport.WriteOutput();
+	}
+	catch (runtime_error& exception) {
+		cout << exception.what() << endl;
+	}
 
 	return 0;
 }
