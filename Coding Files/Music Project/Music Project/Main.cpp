@@ -88,7 +88,7 @@ int main() {
 
 	//GenerateNoteVector();
 
-	WritePhrase::setSeed(time(NULL));
+	WritePhrase::setSeed(static_cast<unsigned>(time(0)));
 	try {
 		//tests1();	// Tests ExportToFile
 		//tests2();	// Tests WritePhrase

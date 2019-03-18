@@ -44,7 +44,6 @@ void WritePhrase::writeThePhrase() {
 		}
 	}
 	else if (speciesType == 2) {
-		writeLowerVoiceTwo();
 		writeUpperVoiceTwo();
 	}
 	else {
@@ -288,20 +287,27 @@ void WritePhrase::writeUpperVoiceOne() {
 }
 
 void WritePhrase::writeUpperVoiceTwo() {
+	//	Writes the Lower voice
 	SpeciesOne imitative;
-	imitative.writeImitativeTwoVoices(phraseLength * beatsPerMeasure);
+	imitative.writeImitativeTwoVoices(phraseLength * beatsPerMeasure / 2);
+	lowerVoiceI = imitative.getImitativeLower();
+	for (auto i : lowerVoiceI) {
+		phraseN.addNoteToLowerVoice(convertIntToNoteTwo(i));
+	}
+
+	// Writes the Upper voice
 	upperVoiceI = imitative.getImitativeUpper();
 	upperVoiceI.emplace(upperVoiceI.begin(), 1);
-
 	for (int i = 0; i < lowerVoiceI.size(); i++) {
 		upperVoiceI.insert((upperVoiceI.begin() + (i * 2) + 1), upperVoiceI.at(i*2)+1);
 	}
 
 	// Output
-	for (int i = 0; i < lowerVoiceI.size()-1; i++) {
+	for (int i = 0; i < upperVoiceI.size()-4; i++) {
 		phraseN.addNoteToUpperVoice(convertIntToNote(upperVoiceI.at(i)));
 	}
-	phraseN.addNoteToUpperVoice(convertIntToNote(upperVoiceI.at(upperVoiceI.size() - 1)));
+	phraseN.addNoteToUpperVoice(convertIntToNoteTwo(upperVoiceI.at(upperVoiceI.size() - 4)));
+	phraseN.addNoteToUpperVoice(convertIntToNoteTwo(upperVoiceI.at(upperVoiceI.size() - 3)));
 
 	// This idea is close to working but it's not so I'm going to try something else
 	/*if (rand() % 2 == 1) {
@@ -345,7 +351,7 @@ void WritePhrase::writeUpperVoiceTwo() {
 	phraseN.addNoteToUpperVoice(convertIntToNoteTwo(upperVoiceI.at(upperVoiceI.size()-1)));*/
 	
 }
-
+		// Not being used right now. Code copied to writeUpperVoiceTwo()
 void WritePhrase::writeLowerVoiceTwo() {
 	SpeciesOne imitativeLower;
 	imitativeLower.writeImitativeTwoVoices(phraseLength * beatsPerMeasure / 2 );

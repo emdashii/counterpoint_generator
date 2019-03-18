@@ -16,11 +16,11 @@ int SpeciesOne::chooseNextNote() {
 	h_cannotCrossMelody(); // fills in a range above and equal to note below
 	
 	//For debugging
-	cout << "NoteOptions initialized:";
-	for (auto o : noteOptions) {
-		cout << o << " ";
-	}
-	cout << endl;
+	//cout << "NoteOptions initialized:";
+	//for (auto o : noteOptions) {
+	//	cout << o << " ";
+	//}
+	//cout << endl;
 	
 	// Removes bad notes
 	h_avoidDimFifth();
@@ -38,11 +38,11 @@ int SpeciesOne::chooseNextNote() {
 	}
 
 	// For debugging
-	cout << "NoteOptions emptied:    ";
-	for (auto o : noteOptions) {
-		cout << o << " ";
-	}
-	cout << endl;
+	//cout << "NoteOptions emptied:    ";
+	//for (auto o : noteOptions) {
+	//	cout << o << " ";
+	//}
+	//cout << endl;
 	if (previousIntervals.size() != 0) {
 		cout << "PreviousInterval: " << previousIntervals.at(previousIntervals.size() - 1) << endl;
 	}
