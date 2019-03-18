@@ -47,6 +47,9 @@ void WritePhrase::writeThePhrase() {
 		writeUpperVoiceTwo();
 	}
 	else {
+		if (speciesType != 1) {
+			cout << "Species unintelligible. Converting to Species 1" << endl;
+		}
 		writeLowerVoice();
 		writeUpperVoiceOne();
 	}
