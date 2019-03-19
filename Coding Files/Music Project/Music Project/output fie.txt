@@ -1,0 +1,43 @@
+\header {
+title = "title"
+composer = "composer"
+tagline = "Written By Caleb Nelson and Elliott Claus's Counterpoint Generation Program"
+}
+\paper {
+	system-system-spacing #'basic-distance = #16
+}
+
+
+% Phrase 1
+"topPhrase1" = { \clef "treble" \key c \major \time 4/4
+ c'4 g'4 d'4 f'4 a'4 c'4 g'4 b'4 d'4 f'4 b'4 c''4\bar "||" }
+"bottomPhrase1" = { \clef "treble" \key c \major \time 4/4
+ c'4 g'4 b4 d'4 f'4 c4 e'4 g4 b4 f'4 d'4 c'4}
+% Phrase 2
+"topPhrase2" = { \clef "treble" \key d \major \time 2/4
+ a'4 fis'4 a'4 g'4 d4 a'4 cis''4 d''4\bar "||" }
+"bottomPhrase2" = { \clef "treble" \key d \major \time 2/4
+ d'4 d'4 d4 b'4 b4 fis'4 e'4 d'4}
+% Phrase 3
+"topPhrase3" = { \clef "treble" \key e \major \time 3/4
+ e'4 fis'4 b'4 cis''4 dis''2 e''2\bar "||" }
+"bottomPhrase3" = { \clef "treble" \key e \major \time 3/4
+ e'2 gis'2 fis'2 e'2}
+\score {
+	<<
+		<<
+			\new Voice = "one" {
+				\"topPhrase1"
+				\"topPhrase2"
+				\"topPhrase3"
+			}
+			>>
+			\new Voice = "one" {
+				\"bottomPhrase1"
+				\"bottomPhrase2"
+				\"bottomPhrase3"
+			}
+	>>
+		\layout{}
+		\midi{}
+}
